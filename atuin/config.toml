@@ -1,0 +1,13 @@
+# Atuin — shell history database. Linked to ~/.config/atuin/config.toml
+# Sync is off by default; to enable, run `atuin register` (or `atuin login`)
+# and set auto_sync = true.
+
+auto_sync = false
+update_check = false
+
+search_mode = "fuzzy"
+filter_mode = "global"
+style = "compact"
+inline_height = 20
+show_preview = true
+enter_accept = true

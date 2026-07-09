@@ -1,0 +1,67 @@
+# ~/.dotfiles/zsh/zshrc
+# Sourced by the managed block in ~/.zshrc (interactive shells).
+
+# Homebrew prefix — zprofile normally exports HOMEBREW_PREFIX; fall back
+# for shells that skipped the login step (e.g. some IDE terminals).
+if [[ -z "${HOMEBREW_PREFIX:-}" ]]; then
+  if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  elif [[ -x /usr/local/bin/brew ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
+fi
+
+# --- Shell options ---
+setopt AUTO_CD              # `some/dir` behaves like `cd some/dir`
+setopt INTERACTIVE_COMMENTS # allow # comments on the command line
+setopt HIST_IGNORE_ALL_DUPS # drop older duplicates from history
+setopt HIST_IGNORE_SPACE    # commands starting with a space stay out of history
+setopt HIST_REDUCE_BLANKS
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
+
+# --- Environment, aliases, functions ---
+source "$HOME/.dotfiles/zsh/exports.zsh"
+source "$HOME/.dotfiles/zsh/aliases.zsh"
+source "$HOME/.dotfiles/zsh/functions.zsh"
+
+# --- Completion ---
+if [[ -n "${HOMEBREW_PREFIX:-}" ]]; then
+  fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
+fi
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'  # case-insensitive
+zstyle ':completion:*' menu no                             # let fzf-tab drive the menu
+zstyle ':completion:*:descriptions' format '[%d]'
+
+# --- Plugins & tools ---
+# Order matters: fzf -> fzf-tab -> autosuggestions ... syntax-highlighting last.
+# Every plugin is optional so a fresh machine works before `brew bundle` ran.
+_dotfiles_source_if_readable() { [[ -r "$1" ]] && source "$1"; return 0 }
+
+if (( $+commands[fzf] )); then
+  source <(fzf --zsh)
+fi
+
+if [[ -n "${HOMEBREW_PREFIX:-}" ]]; then
+  _dotfiles_source_if_readable "$HOMEBREW_PREFIX/share/fzf-tab/fzf-tab.zsh"
+  _dotfiles_source_if_readable "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+fi
+
+if (( $+commands[zoxide] )); then
+  eval "$(zoxide init zsh)"
+fi
+# atuin owns Ctrl-R (overriding fzf's binding above); up-arrow stays native.
+if (( $+commands[atuin] )); then
+  eval "$(atuin init zsh --disable-up-arrow)"
+fi
+if (( $+commands[starship] )); then
+  eval "$(starship init zsh)"
+fi
+
+# Syntax highlighting must be sourced last.
+if [[ -n "${HOMEBREW_PREFIX:-}" ]]; then
+  _dotfiles_source_if_readable "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
+
+unfunction _dotfiles_source_if_readable

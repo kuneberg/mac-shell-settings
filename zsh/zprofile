@@ -1,0 +1,22 @@
+# ~/.dotfiles/zsh/zprofile
+# Sourced by the managed block in ~/.zprofile (login shells).
+# Homebrew initialization and PATH only — interactive setup lives in zshrc.
+
+# --- Homebrew (official shellenv init; Apple Silicon first, then Intel) ---
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# --- PATH additions ---
+path=(
+  "$HOME/.local/bin"
+  "$HOME/bin"
+  $path
+)
+typeset -gU path  # keep PATH entries unique — safe to source repeatedly
+
+# --- Base environment ---
+export LANG="${LANG:-en_US.UTF-8}"
+export HOMEBREW_NO_ENV_HINTS=1

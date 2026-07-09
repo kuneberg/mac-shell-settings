@@ -1,0 +1,35 @@
+# Ghostty configuration — macOS
+# Docs: https://ghostty.org/docs/config
+# Linked to ~/.config/ghostty/config — reload with cmd+shift+, after edits.
+
+# --- Font ---
+font-family = JetBrainsMono Nerd Font
+font-size = 15
+font-thicken = true
+
+# --- Theme ---
+theme = catppuccin-mocha
+# Alternative that matches the Gruvbox starship prompt:
+# theme = GruvboxDark
+background-opacity = 0.92
+background-blur = true
+
+# --- Window ---
+window-padding-x = 12
+window-padding-y = 10
+window-padding-balance = true
+macos-titlebar-style = native
+window-save-state = always
+
+# --- Cursor & mouse ---
+cursor-style = block
+cursor-style-blink = false
+mouse-hide-while-typing = true
+
+# --- Behaviour ---
+copy-on-select = clipboard
+confirm-close-surface = false
+quit-after-last-window-closed = false
+macos-option-as-alt = true
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title

@@ -1,0 +1,49 @@
+# Included from ~/.gitconfig via:
+#   git config --global include.path ~/.dotfiles/git/gitconfig
+# (install.sh does this automatically.)
+#
+# Identity (user.name / user.email) intentionally lives in ~/.gitconfig,
+# not here — this file never overrides it.
+
+[core]
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	line-numbers = true
+	dark = true
+
+[merge]
+	conflictStyle = zdiff3
+
+[diff]
+	colorMoved = default
+
+[init]
+	defaultBranch = main
+
+[push]
+	autoSetupRemote = true
+
+[fetch]
+	prune = true
+
+[rebase]
+	autoStash = true
+
+[alias]
+	st = status -sb
+	co = checkout
+	sw = switch
+	br = branch
+	ci = commit
+	amend = commit --amend --no-edit
+	unstage = restore --staged
+	last = log -1 HEAD --stat
+	d = diff
+	ds = diff --staged
+	lg = log --graph --pretty=format:'%C(auto)%h%d %s %C(dim)%an %ar%C(reset)'
+	aliases = config --get-regexp ^alias
