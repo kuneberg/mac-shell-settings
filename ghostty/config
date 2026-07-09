@@ -11,7 +11,7 @@ font-thicken = true
 theme = catppuccin-mocha
 # Alternative that matches the Gruvbox starship prompt:
 # theme = GruvboxDark
-background-opacity = 0.92
+background-opacity = 0.80
 background-blur = true
 
 # --- Window ---
