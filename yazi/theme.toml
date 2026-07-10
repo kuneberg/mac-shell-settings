@@ -4,8 +4,6 @@
 
 [mgr]
 cwd = { fg = "#a78bfa" }
-hovered = { fg = "#f2ebff", bg = "#372a5e" }
-preview_hovered = { fg = "#f2ebff", bg = "#26203d" }
 find_keyword = { fg = "#f9e2af", bold = true, italic = true }
 find_position = { fg = "#f5c2e7", bg = "reset", bold = true, italic = true }
 marker_copied = { fg = "#a6e3a1", bg = "#a6e3a1" }
@@ -16,6 +14,12 @@ count_copied = { fg = "#14171c", bg = "#a6e3a1" }
 count_cut = { fg = "#14171c", bg = "#f38ba8" }
 count_selected = { fg = "#14171c", bg = "#a78bfa" }
 border_style = { fg = "#4a4463" }
+
+# Hovered-row highlight (yazi 26.x: [indicator], not [mgr].hovered)
+[indicator]
+current = { fg = "#f2ebff", bg = "#6e43c4" }
+parent = { fg = "#f2ebff", bg = "#5a359e" }
+preview = { fg = "#f2ebff", bg = "#5a359e" }
 
 [tabs]
 active = { fg = "#f2ebff", bg = "#6e43c4", bold = true }
@@ -48,6 +52,6 @@ rules = [
     { mime = "application/{pdf,doc,rtf}", fg = "#a6e3a1" },
     { url = "*", is = "orphan", fg = "#f38ba8" },
     { url = "*", is = "exec", fg = "#a6e3a1" },
-    { url = "*/", fg = "#a78bfa", bold = true },
+    { url = "*/", fg = "blue", bold = true },
     { url = "*", fg = "#cdd6f4" },
 ]
