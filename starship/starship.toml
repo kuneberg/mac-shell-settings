@@ -23,6 +23,8 @@ $docker_context\
 [](fg:sixth bg:seventh)\
 $time\
 $cmd_duration\
+[](fg:eighth)\
+$line_break\
 $character\
 """
 
@@ -32,7 +34,7 @@ $character\
 #   ruby: red.
 # To change the colors: change to the corresponding palette.
 
-palette = "ruby"
+palette = "amethyst"
 
 # Disables the blank line at the start of the prompt
 add_newline = true
@@ -225,5 +227,5 @@ style = "bg:eighth fg:white"
 format = '[  $duration ]($style)'
 
 [character]
-success_symbol = "[](fg:eighth bg:eighth)[](fg:eighth)"
-error_symbol = "[](fg:eighth bg:error)[](fg:error)"
+success_symbol = "[❯](bold fg:eighth)"
+error_symbol = "[❯](bold fg:error)"

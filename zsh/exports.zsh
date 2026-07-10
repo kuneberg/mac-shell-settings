@@ -12,17 +12,19 @@ export SAVEHIST=100000
 
 # bat
 export BAT_STYLE="numbers,changes,header"
-export BAT_THEME="gruvbox-dark"
+export BAT_THEME="Dracula"
 
 # eza
 export EZA_ICONS_AUTO=1
 
-# fzf — use fd, follow symlinks, respect .gitignore; Gruvbox Dark colors
+# fzf — use fd, follow symlinks, respect .gitignore; Amethyst colors
+# (accents from the starship amethyst palette, bg transparent -> terminal)
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git"
 export FZF_DEFAULT_OPTS="\
 --height=60% --layout=reverse --border --info=inline \
---color=bg+:#3c3836,bg:#282828,spinner:#fb4934,hl:#928374 \
---color=fg:#ebdbb2,header:#928374,info:#8ec07c,pointer:#fb4934 \
---color=marker:#fb4934,fg+:#ebdbb2,prompt:#fb4934,hl+:#fb4934"
+--color=bg:-1,bg+:#372a5e,fg:#cdd6f4,fg+:#f2ebff \
+--color=hl:#a78bfa,hl+:#c4b1fa,border:#2e2a44 \
+--color=prompt:#a78bfa,pointer:#6e43c4,marker:#6e43c4 \
+--color=spinner:#6e43c4,info:#8a84a8,header:#8a84a8"

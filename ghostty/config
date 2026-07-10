@@ -9,12 +9,15 @@ font-thicken = true
 
 # --- Theme ---
 theme = Catppuccin Mocha
-# Alternative that matches the Gruvbox starship prompt:
-# theme = GruvboxDark
-# Warm dark background override (Catppuccin's base #1e1e2e reads blueish)
-background = #1c1714
+# Cool dark background override
+background = #14171c
 background-opacity = 0.80
-background-blur = true
+background-blur = 22
+# Amethyst accents (match the starship palette)
+cursor-color = #a78bfa
+cursor-text = #14171c
+selection-background = #372a5e
+selection-foreground = #f2ebff
 
 # --- Window ---
 window-padding-x = 0
