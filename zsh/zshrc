@@ -60,6 +60,30 @@ fi
 # atuin owns Ctrl-R (overriding fzf's binding above); up-arrow stays native.
 if (( $+commands[atuin] )); then
   eval "$(atuin init zsh --disable-up-arrow)"
+
+  # Directory-aware autosuggestions. Atuin records the cwd of every
+  # command: prefer matches typed in THIS directory, then global history.
+  # For `cd`/`z` suggestions, skip candidates whose target no longer
+  # exists from here (deleted dirs, relative paths from elsewhere).
+  _zsh_autosuggest_atuin_pick() {
+    local mode="$1" prefix="$2" c target
+    local -a candidates
+    candidates=("${(@f)$(atuin search --cmd-only --limit 20 --search-mode prefix --filter-mode "$mode" -- "$prefix" 2>/dev/null)}")
+    for c in "${candidates[@]}"; do
+      [[ -n "$c" ]] || continue
+      if [[ "$c" == (cd|z)\ * ]]; then
+        target="${(Q)${c#* }}"
+        [[ -d "${target/#\~/$HOME}" ]] || continue
+      fi
+      suggestion="$c"
+      return 0
+    done
+    return 1
+  }
+  _zsh_autosuggest_strategy_atuin_cwd()    { _zsh_autosuggest_atuin_pick directory "$1" }
+  _zsh_autosuggest_strategy_atuin_global() { _zsh_autosuggest_atuin_pick global "$1" }
+  # Set AFTER atuin init, which injects its own non-cwd-aware strategy.
+  ZSH_AUTOSUGGEST_STRATEGY=(atuin_cwd atuin_global)
 fi
 if (( $+commands[starship] )); then
   eval "$(starship init zsh)"
