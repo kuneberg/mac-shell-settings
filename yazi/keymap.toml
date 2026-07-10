@@ -1,0 +1,12 @@
+# Yazi keybindings. Linked to ~/.config/yazi/keymap.toml
+#
+# Enter on a directory -> quit yazi INTO that directory (shell cds there,
+# via the y wrapper's --cwd-file). Enter on a file -> open it as usual.
+# q -> quit and leave the shell where it was.
+
+[mgr]
+prepend_keymap = [
+    { on = "<Enter>", run = "plugin smart-enter", desc = "Open file, or quit into hovered directory" },
+    { on = "q", run = "quit --no-cwd-file", desc = "Quit, shell stays in its directory" },
+    { on = "<Esc>", run = "quit --no-cwd-file", desc = "Quit, shell stays in its directory" },
+]

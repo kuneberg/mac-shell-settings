@@ -1,8 +1,8 @@
 # mac-shell-settings
 
 Single source of truth for my macOS shell and terminal environment:
-**zsh + Ghostty + Starship + Homebrew**, plus tmux, atuin, yazi, git and a
-set of modern CLI tools.
+**zsh + Ghostty + Starship + Homebrew**, plus micro, tmux, atuin, yazi, git
+and a set of modern CLI tools.
 
 Remote: `git@github.com:kuneberg/mac-shell-settings.git`
 Local: `~/.dotfiles`
@@ -50,12 +50,17 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 │   ├── aliases.zsh
 │   ├── exports.zsh
 │   └── functions.zsh
-├── starship/starship.toml  # Gruvbox Rainbow prompt
+├── starship/starship.toml  # amethyst prompt
 ├── ghostty/config
-├── git/gitconfig           # delta, aliases — no identity
+├── git/gitconfig           # delta, micro as editor, aliases — no identity
+├── micro/                  # default $EDITOR — see micro/README.md
+│   ├── settings.json
+│   ├── bindings.json
+│   └── colorschemes/
 ├── tmux/tmux.conf
 ├── atuin/config.toml
-├── yazi/yazi.toml
+├── yazi/                   # yazi.toml, theme, keymap, smart-enter plugin
+├── iterm2/amethyst.json    # iTerm2 dynamic profile (amethyst colors)
 └── docs/setup.md           # new-Mac walkthrough
 ```
 
@@ -67,6 +72,8 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 | `~/.config/starship.toml` | `~/.dotfiles/starship/starship.toml` |
 | `~/.config/atuin/config.toml` | `~/.dotfiles/atuin/config.toml` |
 | `~/.config/yazi/yazi.toml` | `~/.dotfiles/yazi/yazi.toml` |
+| `~/.config/micro` | `~/.dotfiles/micro` (whole directory) |
+| `~/Library/Application Support/iTerm2/DynamicProfiles/amethyst.json` | `~/.dotfiles/iterm2/amethyst.json` |
 | `~/.tmux.conf` | `~/.dotfiles/tmux/tmux.conf` |
 
 `~/.zprofile` and `~/.zshrc` are *not* symlinked. Each gets exactly one
@@ -83,6 +90,26 @@ Git config is pulled in through an include, so your identity stays local:
 ```sh
 git config --global include.path ~/.dotfiles/git/gitconfig
 ```
+
+## Editor
+
+[Micro](https://micro-editor.github.io/) is the default terminal editor:
+`EDITOR`/`VISUAL` are set in `zsh/exports.zsh` and git uses it via
+`core.editor`. Launch with `micro <file>`; configuration lives in
+`micro/` and is documented in [micro/README.md](micro/README.md).
+
+## File manager
+
+Launch [Yazi](https://yazi-rs.github.io/) with `y`:
+
+- **Enter on a directory** — quit yazi and `cd` the shell into it
+  (Enter on a file opens it as usual)
+- **q** — quit and leave the shell where it was
+
+Implemented by the `y` wrapper in `zsh/functions.zsh` (`--cwd-file`)
+plus `yazi/keymap.toml` and the tiny `yazi/plugins/smart-enter.yazi`
+plugin. Theme (amethyst) and options live in `yazi/theme.toml` and
+`yazi/yazi.toml`.
 
 ## Updating
 
@@ -130,7 +157,8 @@ changing anything.
 ```sh
 # 1. Remove the symlinks
 rm ~/.config/ghostty/config ~/.config/starship.toml \
-   ~/.config/atuin/config.toml ~/.config/yazi/yazi.toml ~/.tmux.conf
+   ~/.config/atuin/config.toml ~/.config/yazi/yazi.toml \
+   ~/.config/micro ~/.tmux.conf
 
 # 2. Delete the managed blocks (between the >>> dotfiles >>> markers)
 #    from ~/.zprofile and ~/.zshrc

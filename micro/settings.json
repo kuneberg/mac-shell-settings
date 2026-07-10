@@ -1,0 +1,16 @@
+{
+    "autosave": 0,
+    "clipboard": "external",
+    "colorscheme": "amethyst-mocha",
+    "cursorline": true,
+    "encoding": "utf-8",
+    "mouse": true,
+    "relativeruler": false,
+    "ruler": true,
+    "savecursor": true,
+    "scrollbar": true,
+    "softwrap": true,
+    "syntax": true,
+    "tabsize": 4,
+    "tabstospaces": true
+}

@@ -12,6 +12,7 @@ alias cat='bat'
 alias find='fd'
 alias grep='rg'
 alias du='dust'
+alias gdu='gdu-go'  # brew names the binary gdu-go to avoid a coreutils clash
 alias df='duf'
 alias top='btop'
 alias dig='doggo'

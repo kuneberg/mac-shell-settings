@@ -1,7 +1,10 @@
 # Environment variables for interactive shells.
 
-export EDITOR="${EDITOR:-vim}"
-export VISUAL="$EDITOR"
+export EDITOR="micro"
+export VISUAL="micro"
+
+# micro — enable true color so the amethyst-mocha colorscheme is exact
+export MICRO_TRUECOLOR=1
 export PAGER="less"
 export LESS="-RFX"
 

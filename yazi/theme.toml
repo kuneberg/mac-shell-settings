@@ -1,0 +1,53 @@
+# Yazi theme — amethyst palette, matches starship/tmux/fzf.
+# Overrides are merged over yazi's built-in default theme.
+# Linked to ~/.config/yazi/theme.toml
+
+[mgr]
+cwd = { fg = "#a78bfa" }
+hovered = { fg = "#f2ebff", bg = "#372a5e" }
+preview_hovered = { fg = "#f2ebff", bg = "#26203d" }
+find_keyword = { fg = "#f9e2af", bold = true, italic = true }
+find_position = { fg = "#f5c2e7", bg = "reset", bold = true, italic = true }
+marker_copied = { fg = "#a6e3a1", bg = "#a6e3a1" }
+marker_cut = { fg = "#f38ba8", bg = "#f38ba8" }
+marker_marked = { fg = "#94e2d5", bg = "#94e2d5" }
+marker_selected = { fg = "#a78bfa", bg = "#a78bfa" }
+count_copied = { fg = "#14171c", bg = "#a6e3a1" }
+count_cut = { fg = "#14171c", bg = "#f38ba8" }
+count_selected = { fg = "#14171c", bg = "#a78bfa" }
+border_style = { fg = "#4a4463" }
+
+[tabs]
+active = { fg = "#f2ebff", bg = "#6e43c4", bold = true }
+inactive = { fg = "#8a84a8", bg = "#201c30" }
+
+[mode]
+normal_main = { fg = "#f2ebff", bg = "#6e43c4", bold = true }
+normal_alt = { fg = "#a78bfa", bg = "#372a5e" }
+select_main = { fg = "#14171c", bg = "#94e2d5", bold = true }
+select_alt = { fg = "#94e2d5", bg = "#372a5e" }
+unset_main = { fg = "#14171c", bg = "#f5c2e7", bold = true }
+unset_alt = { fg = "#f5c2e7", bg = "#372a5e" }
+
+[status]
+perm_type = { fg = "#a78bfa" }
+perm_read = { fg = "#f9e2af" }
+perm_write = { fg = "#f38ba8" }
+perm_exec = { fg = "#94e2d5" }
+perm_sep = { fg = "#6c6685" }
+progress_normal = { fg = "#6e43c4", bg = "#201c30" }
+progress_error = { fg = "#f38ba8", bg = "#201c30" }
+
+# File-list colors. Defining rules replaces yazi's defaults (which color
+# directories ANSI blue), so this is a complete set with a fallback.
+[filetype]
+rules = [
+    { mime = "image/*", fg = "#f9e2af" },
+    { mime = "{audio,video}/*", fg = "#f5c2e7" },
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#fab387" },
+    { mime = "application/{pdf,doc,rtf}", fg = "#a6e3a1" },
+    { url = "*", is = "orphan", fg = "#f38ba8" },
+    { url = "*", is = "exec", fg = "#a6e3a1" },
+    { url = "*/", fg = "#a78bfa", bold = true },
+    { url = "*", fg = "#cdd6f4" },
+]

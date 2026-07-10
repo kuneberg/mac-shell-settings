@@ -15,6 +15,12 @@ TARGETS=(
   "$HOME/.config/starship.toml"
   "$HOME/.config/atuin/config.toml"
   "$HOME/.config/yazi/yazi.toml"
+  "$HOME/.config/yazi/theme.toml"
+  "$HOME/.config/yazi/keymap.toml"
+  "$HOME/.config/micro/settings.json"
+  "$HOME/.config/micro/bindings.json"
+  "$HOME/Library/Application Support/iTerm2/DynamicProfiles/amethyst.json"
+  "$HOME/.gdu.yaml"
 )
 
 info "Backing up managed files -> $DOTFILES_BACKUP_DIR"

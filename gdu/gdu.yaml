@@ -1,0 +1,18 @@
+# gdu — interactive disk usage explorer. Linked to ~/.gdu.yaml
+# ignore-dirs replaces gdu's defaults (/proc,/dev,/sys,/run), so keep them.
+ignore-dirs:
+  - /proc
+  - /dev
+  - /sys
+  - /run
+  # OrbStack's virtual filesystem: huge, slow to walk, sizes are not real disk usage
+  - /Users/maks/OrbStack
+
+# Amethyst accents (everything else follows the terminal ANSI palette)
+style:
+  selected-row:
+    text-color: "#f2ebff"
+    background-color: "#372a5e"
+  marked:
+    text-color: "#f2ebff"
+    background-color: "#5a359e"

@@ -16,6 +16,7 @@ brew "bat"     # cat
 brew "fd"      # find
 brew "ripgrep" # grep
 brew "dust"    # du
+brew "gdu"     # interactive disk usage explorer
 brew "duf"     # df
 brew "btop"    # top
 brew "doggo"   # dig
@@ -27,6 +28,9 @@ brew "lazygit"
 brew "gh"
 brew "lazydocker"
 
+# --- Editor ---
+brew "micro"  # terminal text editor ($EDITOR)
+
 # --- Utilities ---
 brew "tmux"
 brew "yazi"   # terminal file manager
@@ -35,4 +39,5 @@ brew "httpie"
 
 # --- Casks ---
 cask "ghostty"
+cask "iterm2"
 cask "font-jetbrains-mono-nerd-font"

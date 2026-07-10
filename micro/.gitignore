@@ -1,0 +1,4 @@
+# Runtime state micro writes into its config dir — not configuration.
+buffers/
+backups/
+plug/

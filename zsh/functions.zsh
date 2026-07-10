@@ -12,14 +12,14 @@ up() {
   cd "${dir:-.}"
 }
 
-# yy — yazi that leaves the shell in yazi's last directory
-yy() {
-  local tmp cwd
-  tmp="$(mktemp -t yazi-cwd.XXXXXX)"
-  yazi "$@" --cwd-file="$tmp"
-  cwd="$(<"$tmp")"
-  rm -f -- "$tmp"
-  [[ -n "$cwd" && "$cwd" != "$PWD" ]] && cd -- "$cwd"
+# y — yazi that leaves the shell in yazi's last directory
+# (official wrapper from https://yazi-rs.github.io/docs/quick-start)
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
 }
 
 # extract <archive> — unpack common archive formats
