@@ -33,7 +33,8 @@ brew "micro"  # terminal text editor ($EDITOR)
 
 # --- Utilities ---
 brew "tmux"
-brew "yazi"   # terminal file manager
+brew "yazi"    # terminal file manager
+brew "poppler" # pdftoppm — yazi PDF previews
 brew "jq"
 brew "httpie"
 
