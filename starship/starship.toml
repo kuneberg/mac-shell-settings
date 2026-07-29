@@ -1,7 +1,6 @@
 format = """
-$os\
-$username\
 $directory\
+[](fg:black bg:third)\
 (\
     $python\
     $conda\
@@ -12,15 +11,17 @@ $directory\
     $java\
     $julia\
     $rust\
+    [](fg:black bg:fourth)\
 )\
-[](fg:fourth bg:fifth)\
-$docker_context\
-[](fg:fifth bg:sixth)\
+(\
+    $docker_context\
+    [](fg:black bg:fifth)\
+)\
 (\
     $git_branch\
     $git_status\
+    [](fg:sixth bg:seventh)\
 )\
-[](fg:sixth bg:seventh)\
 $time\
 $cmd_duration\
 [](fg:eighth)\
@@ -101,58 +102,9 @@ black = "#272D37"
 text = "#F2EBFF"
 github = "#450920"
 
-[os]
-format = "[](first)[$symbol]($style)[](fg:first bg:second)"
-style = "bg:first fg:text"
-disabled = false
-
-[os.symbols]
-Alpine = " "
-Amazon = " "
-Android = " "
-Arch = " "
-CentOS = " "
-Debian = " "
-DragonFly = " "
-Emscripten = " "
-EndeavourOS = " "
-Fedora = " "
-FreeBSD = " "
-Garuda = "﯑ "
-Gentoo = " "
-HardenedBSD = "ﲊ "
-Illumos = " "
-Linux = " "
-Macos = " "
-Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
-Mint = " "
-NetBSD = " "
-NixOS = " "
-OpenBSD = " "
-openSUSE = " "
-OracleLinux = " "
-Pop = " "
-Raspbian = " "
-Redhat = " "
-RedHatEnterprise = " "
-Redox = " "
-Solus = "ﴱ "
-SUSE = " "
-Ubuntu = " "
-Unknown = " "
-Windows = " "
-
-[username]
-show_always = true
-style_user = "bg:second fg:text"
-style_root = "bg:second fg:text"
-format = '[$user]($style)[](fg:second bg:third)'
-
 [directory]
 style = "bg:third fg:text"
-format = "[   $path ]($style)($style)[$read_only]($read_only_style)[](fg:third bg:fourth)"
+format = "[](third)[   $path ]($style)($style)[$read_only]($read_only_style)"
 truncation_symbol = "…/"
 truncate_to_repo = true
 read_only ="  "
@@ -226,7 +178,7 @@ format = '[$symbol $context ]($style)'
 [git_branch]
 symbol = " "
 style = "bg:sixth fg:text"
-format = '[$symbol $branch ]($style)'
+format = '[ $symbol$branch ]($style)'
 
 [git_status]
 format = '([\($all_status$ahead_behind\) ]($style))'
