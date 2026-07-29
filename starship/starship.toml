@@ -31,10 +31,11 @@ $character\
 # Palettes:
 #   opal: sky blue.
 #   amethyst: purple.
+#   terra: sage green & terracotta.
 #   ruby: red.
 # To change the colors: change to the corresponding palette.
 
-palette = "amethyst"
+palette = "terra"
 
 # Disables the blank line at the start of the prompt
 add_newline = true
@@ -52,7 +53,7 @@ eighth = "#3A7EAE"
 error = "#C1121F"
 # Text color:
 black = "#272D37"
-white = "#CBF4F8"
+text = "#CBF4F8"
 github = "#B02B10"
 
 [palettes.amethyst]
@@ -67,8 +68,23 @@ eighth = "#5A359E"
 error = "#C1121F"
 # Text color:
 black = "#272D37"
-white = "#F2EBFF"
+text = "#F2EBFF"
 github = "#B02B10"
+
+[palettes.terra]
+first = "#F77D5B"
+second = "#F17A5E"
+third = "#EC7760"
+fourth = "#E67563"
+fifth = "#E17266"
+sixth = "#DB6F68"
+seventh = "#D66C6B"
+eighth = "#D0686E"
+error = "#C1121F"
+# Text color (the coral->rose gradient is light, so segment text is dark ink):
+black = "#2B211B"
+text = "#2B211B"
+github = "#551A0E"
 
 [palettes.ruby]
 first = "#873739"
@@ -82,12 +98,12 @@ eighth = "#98393F"
 error = "#C1121F"
 # Text color:
 black = "#272D37"
-white = "#F2EBFF"
+text = "#F2EBFF"
 github = "#450920"
 
 [os]
 format = "[](first)[$symbol]($style)[](fg:first bg:second)"
-style = "bg:first fg:white"
+style = "bg:first fg:text"
 disabled = false
 
 [os.symbols]
@@ -130,12 +146,12 @@ Windows = " "
 
 [username]
 show_always = true
-style_user = "bg:second fg:white"
-style_root = "bg:second fg:white"
+style_user = "bg:second fg:text"
+style_root = "bg:second fg:text"
 format = '[$user]($style)[](fg:second bg:third)'
 
 [directory]
-style = "bg:third fg:white"
+style = "bg:third fg:text"
 format = "[   $path ]($style)($style)[$read_only]($read_only_style)[](fg:third bg:fourth)"
 truncation_symbol = "…/"
 truncate_to_repo = true
@@ -150,66 +166,66 @@ read_only ="  "
 [c]
 symbol = " "
 version_format = "${raw}"
-style = "bg:fourth fg:white"
+style = "bg:fourth fg:text"
 format = '[$symbol($version) ]($style)'
 
 [golang]
 symbol = " "
 version_format = "${raw}"
-style = "bg:fourth fg:white"
+style = "bg:fourth fg:text"
 format = '[$symbol($version) ]($style)'
 
 [python]
 symbol = " "
 version_format = "${raw}"
-style = "bg:fourth fg:white"
+style = "bg:fourth fg:text"
 python_binary = ["./venv/bin/python", "./env/Scripts/python", "python", "python3", "python2"]
-format = '[$symbol($version)]($style)[ (\($virtualenv\)) ](bg:fourth fg:white)'
+format = '[$symbol($version)]($style)[ (\($virtualenv\)) ](bg:fourth fg:text)'
 
 [conda]
 symbol = " "
-style = "bg:fourth fg:white"
+style = "bg:fourth fg:text"
 ignore_base = false
 format = '[$symbol ($environment) ]($style)'
 
 [haskell]
 symbol = " "
 version_format = "${raw}"
-style = "bg:fourth fg:white"
+style = "bg:fourth fg:text"
 format = '[$symbol($version) ]($style)'
 
 [java]
 symbol = " "
 version_format = "${raw}"
-style = "bg:fourth fg:white"
+style = "bg:fourth fg:text"
 format = '[$symbol($version) ]($style)'
 
 [julia]
 symbol = " "
 version_format = "${raw}"
-style = "bg:fourth fg:white"
+style = "bg:fourth fg:text"
 format = '[$symbol($version) ]($style)'
 
 [nodejs]
 symbol = " "
 version_format = "${raw}"
-style = "bg:fourth fg:white"
+style = "bg:fourth fg:text"
 format = '[$symbol($version) ]($style)'
 
 [rust]
 symbol = " "
 version_format = "${raw}"
-style = "bg:fourth fg:white"
+style = "bg:fourth fg:text"
 format = '[$symbol($version) ]($style)'
 
 [docker_context]
 symbol = " "
-style = "bg:fifth fg:white"
+style = "bg:fifth fg:text"
 format = '[$symbol $context ]($style)'
 
 [git_branch]
 symbol = " "
-style = "bg:sixth fg:white"
+style = "bg:sixth fg:text"
 format = '[$symbol $branch ]($style)'
 
 [git_status]
@@ -219,11 +235,11 @@ style = "bold bg:sixth fg:github"
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:seventh fg:white"
+style = "bg:seventh fg:text"
 format = '[  $time]($style)[](fg:seventh bg:eighth)'
 
 [cmd_duration]
-style = "bg:eighth fg:white"
+style = "bg:eighth fg:text"
 format = '[  $duration ]($style)'
 
 [character]

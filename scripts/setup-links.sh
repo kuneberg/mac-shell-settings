@@ -21,5 +21,5 @@ link_file "$DOTFILES_DIR/tmux/tmux.conf"         "$HOME/.tmux.conf"
 # micro links its whole config directory (settings, bindings, colorschemes)
 link_file "$DOTFILES_DIR/micro"                  "$HOME/.config/micro"
 # iTerm2 auto-loads profiles from its DynamicProfiles directory
-link_file "$DOTFILES_DIR/iterm2/amethyst.json"   "$HOME/Library/Application Support/iTerm2/DynamicProfiles/amethyst.json"
+link_file "$DOTFILES_DIR/iterm2/terra.json"      "$HOME/Library/Application Support/iTerm2/DynamicProfiles/terra.json"
 link_file "$DOTFILES_DIR/gdu/gdu.yaml"           "$HOME/.gdu.yaml"

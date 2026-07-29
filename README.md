@@ -50,7 +50,7 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 │   ├── aliases.zsh
 │   ├── exports.zsh
 │   └── functions.zsh
-├── starship/starship.toml  # amethyst prompt
+├── starship/starship.toml  # terra prompt
 ├── ghostty/config
 ├── git/gitconfig           # delta, micro as editor, aliases — no identity
 ├── micro/                  # default $EDITOR — see micro/README.md
@@ -60,7 +60,7 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 ├── tmux/tmux.conf
 ├── atuin/config.toml
 ├── yazi/                   # yazi.toml, theme, keymap, smart-enter plugin
-├── iterm2/amethyst.json    # iTerm2 dynamic profile (amethyst colors)
+├── iterm2/terra.json       # iTerm2 dynamic profile (terra colors)
 └── docs/setup.md           # new-Mac walkthrough
 ```
 
@@ -73,7 +73,7 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 | `~/.config/atuin/config.toml` | `~/.dotfiles/atuin/config.toml` |
 | `~/.config/yazi/yazi.toml` | `~/.dotfiles/yazi/yazi.toml` |
 | `~/.config/micro` | `~/.dotfiles/micro` (whole directory) |
-| `~/Library/Application Support/iTerm2/DynamicProfiles/amethyst.json` | `~/.dotfiles/iterm2/amethyst.json` |
+| `~/Library/Application Support/iTerm2/DynamicProfiles/terra.json` | `~/.dotfiles/iterm2/terra.json` |
 | `~/.tmux.conf` | `~/.dotfiles/tmux/tmux.conf` |
 
 `~/.zprofile` and `~/.zshrc` are *not* symlinked. Each gets exactly one
@@ -108,7 +108,7 @@ Launch [Yazi](https://yazi-rs.github.io/) with `y`:
 
 Implemented by the `y` wrapper in `zsh/functions.zsh` (`--cwd-file`)
 plus `yazi/keymap.toml` and the tiny `yazi/plugins/smart-enter.yazi`
-plugin. Theme (amethyst) and options live in `yazi/theme.toml` and
+plugin. Theme (terra) and options live in `yazi/theme.toml` and
 `yazi/yazi.toml`.
 
 ## Updating

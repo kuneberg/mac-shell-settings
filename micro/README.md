@@ -25,7 +25,7 @@ that respects those variables (git, crontab, ...) opens Micro.
 | --- | --- |
 | `settings.json` | editor options (soft wrap, 4-space tabs, scrollbar, ...) |
 | `bindings.json` | extra keybindings on top of Micro's defaults |
-| `colorschemes/amethyst-mocha.micro` | colorscheme matching the repo-wide amethyst palette |
+| `colorschemes/terra.micro` | colorscheme matching the repo-wide terra palette |
 
 Runtime files Micro writes itself (`buffers/`, `backups/`, history) land in
 this directory too and are ignored via `.gitignore`.

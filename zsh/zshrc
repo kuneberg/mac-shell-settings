@@ -48,11 +48,11 @@ if [[ -n "${HOMEBREW_PREFIX:-}" ]]; then
   _dotfiles_source_if_readable "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
 
-# fzf-tab inherits the amethyst colors from FZF_DEFAULT_OPTS
+# fzf-tab inherits the terra colors from FZF_DEFAULT_OPTS
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
-# Autosuggestion ghost text in muted purple-grey to match the palette
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#6c6685"
+# Autosuggestion ghost text in muted warm grey to match the palette
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#736a5f"
 
 if (( $+commands[zoxide] )); then
   eval "$(zoxide init zsh)"
