@@ -1,7 +1,7 @@
 format = """
 $directory\
-[](fg:black bg:third)\
 (\
+    [](fg:black bg:fourth)\
     $python\
     $conda\
     $nodejs\
@@ -11,17 +11,17 @@ $directory\
     $java\
     $julia\
     $rust\
-    [](fg:black bg:fourth)\
 )\
 (\
-    $docker_context\
     [](fg:black bg:fifth)\
+    $docker_context\
 )\
 (\
+    [](fg:black bg:third)\
     $git_branch\
     $git_status\
-    [](fg:sixth bg:seventh)\
 )\
+[](fg:third bg:seventh)\
 $time\
 $cmd_duration\
 [](fg:eighth)\
@@ -108,6 +108,7 @@ format = "[](third)[   $path ]($style)($style)[$read_only]($read_only_styl
 truncation_symbol = "…/"
 truncate_to_repo = true
 read_only ="  "
+read_only_style = "bg:third fg:text"
 
 [directory.substitutions]
 "Documents" = "  "
@@ -177,12 +178,12 @@ format = '[$symbol $context ]($style)'
 
 [git_branch]
 symbol = " "
-style = "bg:sixth fg:text"
+style = "bg:third fg:text"
 format = '[ $symbol$branch ]($style)'
 
 [git_status]
 format = '([\($all_status$ahead_behind\) ]($style))'
-style = "bold bg:sixth fg:github"
+style = "bold bg:third fg:github"
 
 [time]
 disabled = false
