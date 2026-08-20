@@ -26,17 +26,24 @@ source "$HOME/.dotfiles/zsh/aliases.zsh"
 source "$HOME/.dotfiles/zsh/functions.zsh"
 
 # --- Terminal title (window / tab header) ---
-# Show the cwd at the prompt and the command while it runs, in every
-# terminal (Alacritty tabs, iTerm2, ...). Same format as Ghostty's own
-# shell integration, which already does this when its `title` feature is
-# on — skip there to avoid sending the sequence twice.
-if [[ "${GHOSTTY_SHELL_FEATURES:-}" != *title* ]]; then
-  autoload -Uz add-zsh-hook
-  _dotfiles_title_precmd()  { print -rn -- $'\e]2;'"${(%):-%(4~|…/%3~|%~)}"$'\a' }
-  _dotfiles_title_preexec() { print -rn -- $'\e]2;'"${1//[[:cntrl:]]}"$'\a' }
-  add-zsh-hook precmd  _dotfiles_title_precmd
-  add-zsh-hook preexec _dotfiles_title_preexec
-fi
+# Directory name at the prompt, "dir | binary" while a command runs
+# (e.g. `Work | claude`). Applies to every terminal: Ghostty's own title
+# feature is off in ghostty/config so this format is used there as well.
+autoload -Uz add-zsh-hook
+_dotfiles_title_precmd() { print -rn -- $'\e]2;'"${(%):-%1~}"$'\a' }
+_dotfiles_title_preexec() {
+  # $2 is the alias-expanded command line. Keep its first real word,
+  # skipping env assignments, wrappers (sudo, command, time, ...) and
+  # their options; show only the basename of the binary.
+  local -a words; words=(${(z)2})
+  while (( $#words )) && [[ "$words[1]" == (*=*|-*|sudo|command|builtin|exec|noglob|nocorrect|time|nohup) ]]; do
+    shift words
+  done
+  local bin="${words[1]:t}"
+  print -rn -- $'\e]2;'"${(%):-%1~}${bin:+ | $bin}"$'\a'
+}
+add-zsh-hook precmd  _dotfiles_title_precmd
+add-zsh-hook preexec _dotfiles_title_preexec
 
 # --- Completion ---
 if [[ -n "${HOMEBREW_PREFIX:-}" ]]; then

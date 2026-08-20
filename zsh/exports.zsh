@@ -3,6 +3,10 @@
 export EDITOR="micro"
 export VISUAL="micro"
 
+# Claude Code rewrites the terminal title while it runs; keep the
+# "dir | claude" title from zsh/zshrc instead.
+export CLAUDE_CODE_DISABLE_TERMINAL_TITLE=1
+
 # micro — enable true color so the terra colorscheme is exact
 export MICRO_TRUECOLOR=1
 export PAGER="less"

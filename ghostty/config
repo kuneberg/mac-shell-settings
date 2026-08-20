@@ -54,4 +54,5 @@ confirm-close-surface = false
 quit-after-last-window-closed = false
 macos-option-as-alt = true
 shell-integration = zsh
-shell-integration-features = cursor,sudo,title
+# title is set by zsh (zsh/zshrc) as "dir | binary" — keep Ghostty's own off
+shell-integration-features = cursor,sudo
