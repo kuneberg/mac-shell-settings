@@ -25,6 +25,19 @@ source "$HOME/.dotfiles/zsh/exports.zsh"
 source "$HOME/.dotfiles/zsh/aliases.zsh"
 source "$HOME/.dotfiles/zsh/functions.zsh"
 
+# --- Terminal title (window / tab header) ---
+# Show the cwd at the prompt and the command while it runs, in every
+# terminal (Alacritty tabs, iTerm2, ...). Same format as Ghostty's own
+# shell integration, which already does this when its `title` feature is
+# on — skip there to avoid sending the sequence twice.
+if [[ "${GHOSTTY_SHELL_FEATURES:-}" != *title* ]]; then
+  autoload -Uz add-zsh-hook
+  _dotfiles_title_precmd()  { print -rn -- $'\e]2;'"${(%):-%(4~|…/%3~|%~)}"$'\a' }
+  _dotfiles_title_preexec() { print -rn -- $'\e]2;'"${1//[[:cntrl:]]}"$'\a' }
+  add-zsh-hook precmd  _dotfiles_title_precmd
+  add-zsh-hook preexec _dotfiles_title_preexec
+fi
+
 # --- Completion ---
 if [[ -n "${HOMEBREW_PREFIX:-}" ]]; then
   fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
