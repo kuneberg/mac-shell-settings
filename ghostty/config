@@ -28,7 +28,7 @@ palette = 15=#a89a8f
 foreground = #e8d7d0
 # Green-black background
 background = #161a16
-background-opacity = 0.80
+background-opacity = 0.70
 background-blur = 22
 # Terra accents
 cursor-color = #f77d5b

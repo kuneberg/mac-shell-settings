@@ -2,7 +2,7 @@
 # Docs: https://alacritty.org/config-alacritty.html
 # Linked to ~/.config/alacritty/alacritty.toml — reloads live on save.
 #
-# Mirrors ghostty/config: same font, terra palette, 0.80 opacity + blur.
+# Mirrors ghostty/config: same font, terra palette, 0.70 opacity + blur.
 # Ghostty-only things with no Alacritty equivalent: font-thicken,
 # macos-titlebar-style = tabs (no tabs — use tmux), window-save-state,
 # shell-integration (zsh handles it), confirm-close-surface.
@@ -26,7 +26,7 @@ builtin_box_drawing = true
 
 # --- Window ---
 [window]
-opacity = 0.80
+opacity = 0.70
 blur = true
 padding = { x = 0, y = 0 }
 dynamic_padding = true

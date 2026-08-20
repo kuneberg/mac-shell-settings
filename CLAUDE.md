@@ -38,8 +38,8 @@ comment grey `#7d8578`
 
 ### Backgrounds
 
-- Ghostty: `#161a16` (green-black), opacity 0.80, blur
-- Alacritty: same as Ghostty (`#161a16`, opacity 0.80, blur) — `alacritty/alacritty.toml`
+- Ghostty: `#161a16` (green-black), opacity 0.70, blur
+- Alacritty: same as Ghostty (`#161a16`, opacity 0.70, blur) — `alacritty/alacritty.toml`
 - iTerm2: `#1f1a16` (warm bark), transparency 0.2, blur
 - All terminals use the custom terra ANSI-16 palette, defined in
   `ghostty/config` and mirrored in `alacritty/alacritty.toml` and
