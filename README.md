@@ -1,7 +1,8 @@
+| `~/.config/alacritty/alacritty.toml` | `~/.dotfiles/alacritty/alacritty.toml` |
 # mac-shell-settings
 
 Single source of truth for my macOS shell and terminal environment:
-**zsh + Ghostty + Starship + Homebrew**, plus micro, tmux, atuin, yazi, git
+**zsh + Ghostty + Starship + Homebrew**, plus Alacritty, micro, tmux, atuin, yazi, git
 and a set of modern CLI tools.
 
 Remote: `git@github.com:kuneberg/mac-shell-settings.git`
@@ -52,6 +53,7 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 │   └── functions.zsh
 ├── starship/starship.toml  # terra prompt
 ├── ghostty/config
+├── alacritty/alacritty.toml # same font / terra colors / opacity as ghostty
 ├── git/gitconfig           # delta, micro as editor, aliases — no identity
 ├── micro/                  # default $EDITOR — see micro/README.md
 │   ├── settings.json
@@ -156,8 +158,8 @@ changing anything.
 
 ```sh
 # 1. Remove the symlinks
-rm ~/.config/ghostty/config ~/.config/starship.toml \
-   ~/.config/atuin/config.toml ~/.config/yazi/yazi.toml \
+rm ~/.config/ghostty/config ~/.config/alacritty/alacritty.toml \
+   ~/.config/starship.toml ~/.config/atuin/config.toml ~/.config/yazi/yazi.toml \
    ~/.config/micro ~/.tmux.conf
 
 # 2. Delete the managed blocks (between the >>> dotfiles >>> markers)

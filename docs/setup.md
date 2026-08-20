@@ -33,7 +33,7 @@ wiring. It is safe to re-run if anything fails midway (e.g. network).
 ## 3. First-run steps (manual)
 
 - **Restart the terminal** or run `exec zsh` so the new config loads.
-- **Launch Ghostty** once from `/Applications` (macOS Gatekeeper prompt).
+- **Launch Ghostty** (and Alacritty, if you use it) once from `/Applications` (macOS Gatekeeper prompt).
 - **Git identity** — stored locally, never in the repo:
 
   ```sh
@@ -65,4 +65,4 @@ git config --get core.pager
 ```
 
 If prompt icons render as boxes, make sure Ghostty is using
-**JetBrainsMono Nerd Font** (it is set in `ghostty/config`).
+**JetBrainsMono Nerd Font** (it is set in `ghostty/config` and `alacritty/alacritty.toml`).

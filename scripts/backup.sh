@@ -12,6 +12,7 @@ TARGETS=(
   "$HOME/.zshrc"
   "$HOME/.tmux.conf"
   "$HOME/.config/ghostty/config"
+  "$HOME/.config/alacritty/alacritty.toml"
   "$HOME/.config/starship.toml"
   "$HOME/.config/atuin/config.toml"
   "$HOME/.config/yazi/yazi.toml"

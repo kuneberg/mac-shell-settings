@@ -40,5 +40,6 @@ brew "httpie"
 
 # --- Casks ---
 cask "ghostty"
+cask "alacritty"
 cask "iterm2"
 cask "font-jetbrains-mono-nerd-font"

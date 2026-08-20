@@ -1,0 +1,91 @@
+# Alacritty configuration — macOS
+# Docs: https://alacritty.org/config-alacritty.html
+# Linked to ~/.config/alacritty/alacritty.toml — reloads live on save.
+#
+# Mirrors ghostty/config: same font, terra palette, 0.80 opacity + blur.
+# Ghostty-only things with no Alacritty equivalent: font-thicken,
+# macos-titlebar-style = tabs (no tabs — use tmux), window-save-state,
+# shell-integration (zsh handles it), confirm-close-surface.
+
+[general]
+live_config_reload = true
+
+[env]
+# Alacritty would set TERM=alacritty; xterm-256color matches ghostty/iterm2
+# on remote hosts and the RGB override in tmux/tmux.conf.
+TERM = "xterm-256color"
+
+# --- Font ---
+[font]
+size = 15.0
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
+builtin_box_drawing = true
+
+# --- Window ---
+[window]
+opacity = 0.80
+blur = true
+padding = { x = 0, y = 0 }
+dynamic_padding = true
+decorations = "Full"
+startup_mode = "Windowed"
+dynamic_title = true
+option_as_alt = "Both"
+
+# --- Theme (Terra) ---
+# Same ANSI-16 palette as ghostty/config and iterm2/terra.json.
+[colors.primary]
+foreground = "#e8d7d0"
+# Green-black background
+background = "#161a16"
+
+[colors.cursor]
+cursor = "#f77d5b"
+text = "#161a16"
+
+[colors.selection]
+background = "#3c4a3e"
+text = "#f5ede4"
+
+[colors.normal]
+black = "#414a42"
+red = "#d0686e"
+green = "#859e89"
+yellow = "#edc27a"
+blue = "#7e9ca8"
+magenta = "#b48ea3"
+cyan = "#84a89a"
+white = "#d6c8bd"
+
+[colors.bright]
+black = "#5f695c"
+red = "#dd8288"
+green = "#9ab3a0"
+yellow = "#f4d49a"
+blue = "#94b2bd"
+magenta = "#c9a5b8"
+cyan = "#9dc0b0"
+white = "#a89a8f"
+
+# --- Cursor & mouse ---
+[cursor]
+style = { shape = "Block", blinking = "Never" }
+unfocused_hollow = true
+
+[mouse]
+hide_when_typing = true
+
+# --- Behaviour ---
+[selection]
+# copy-on-select
+save_to_clipboard = true
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[bell]
+duration = 0

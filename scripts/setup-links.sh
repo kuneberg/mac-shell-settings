@@ -8,9 +8,10 @@ set -euo pipefail
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/utils.sh"
 
 info "Creating ~/.config directories..."
-mkdir -p "$HOME/.config/ghostty" "$HOME/.config/atuin" "$HOME/.config/yazi"
+mkdir -p "$HOME/.config/ghostty" "$HOME/.config/alacritty" "$HOME/.config/atuin" "$HOME/.config/yazi"
 
 link_file "$DOTFILES_DIR/ghostty/config"         "$HOME/.config/ghostty/config"
+link_file "$DOTFILES_DIR/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
 link_file "$DOTFILES_DIR/starship/starship.toml" "$HOME/.config/starship.toml"
 link_file "$DOTFILES_DIR/atuin/config.toml"      "$HOME/.config/atuin/config.toml"
 link_file "$DOTFILES_DIR/yazi/yazi.toml"         "$HOME/.config/yazi/yazi.toml"
