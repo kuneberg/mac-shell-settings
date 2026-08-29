@@ -29,8 +29,10 @@ source "$HOME/.dotfiles/zsh/functions.zsh"
 # Directory name at the prompt, "dir | binary" while a command runs
 # (e.g. `Work | claude`). Applies to every terminal: Ghostty's own title
 # feature is off in ghostty/config so this format is used there as well.
+# OSC 0 (not 2): iTerm2 shows the *icon* title in tabs, OSC 2 only renames
+# the window; Ghostty and Alacritty treat 0 and 2 the same.
 autoload -Uz add-zsh-hook
-_dotfiles_title_precmd() { print -rn -- $'\e]2;'"${(%):-%1~}"$'\a' }
+_dotfiles_title_precmd() { print -rn -- $'\e]0;'"${(%):-%1~}"$'\a' }
 _dotfiles_title_preexec() {
   # $2 is the alias-expanded command line. Keep its first real word,
   # skipping env assignments, wrappers (sudo, command, time, ...) and
@@ -40,7 +42,7 @@ _dotfiles_title_preexec() {
     shift words
   done
   local bin="${words[1]:t}"
-  print -rn -- $'\e]2;'"${(%):-%1~}${bin:+ | $bin}"$'\a'
+  print -rn -- $'\e]0;'"${(%):-%1~}${bin:+ | $bin}"$'\a'
 }
 add-zsh-hook precmd  _dotfiles_title_precmd
 add-zsh-hook preexec _dotfiles_title_preexec

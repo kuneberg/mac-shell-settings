@@ -40,7 +40,8 @@ comment grey `#7d8578`
 
 - Ghostty: `#161a16` (green-black), opacity 0.70, blur
 - Alacritty: same as Ghostty (`#161a16`, opacity 0.70, blur) — `alacritty/alacritty.toml`
-- iTerm2: `#1f1a16` (warm bark), transparency 0.2, blur
+- iTerm2: same as Ghostty (`#161a16`, transparency 0.30 = opacity 0.70,
+  blur) — `iterm2/terra.json`
 - All terminals use the custom terra ANSI-16 palette, defined in
   `ghostty/config` and mirrored in `alacritty/alacritty.toml` and
   `iterm2/terra.json`:
@@ -105,6 +106,16 @@ sorting is case-insensitive), not just any match on screen.
   intentionally still `dotfiles-amethyst` (its original value) — iTerm2
   keys the default-profile pref on the Guid, so changing it would reset
   the user's choice. Don't "fix" it when renaming palettes.
+  Non-color keys mirror ghostty/alacritty: `Transparency` is
+  1 − opacity, `Option Key Sends`/`Right Option Key Sends` 2 = Esc+,
+  `Cursor Type` 2 = block, `Keyboard Map` keys are
+  `"0x<char>-0x<modifiers>"` (Return 0xd, Shift 0x20000) with
+  `Action` 11 = send hex codes (10 = ESC + text). Window padding is a
+  global advanced pref (`TerminalMargin`/`TerminalVMargin`), not
+  per-profile, so it is not managed here.
+- Terminal title: zsh emits OSC 0 (`\e]0;`), not OSC 2 — iTerm2 shows
+  the icon title in tabs and only renames the window on OSC 2; Ghostty
+  and Alacritty treat 0 and 2 identically.
 - Powerline glyphs (``, U+E0B0) can get mangled by text edits — verify
   with `hexdump` (bytes `ee 82 b0`) after editing starship/tmux configs.
 

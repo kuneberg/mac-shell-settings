@@ -1,4 +1,3 @@
-| `~/.config/alacritty/alacritty.toml` | `~/.dotfiles/alacritty/alacritty.toml` |
 # mac-shell-settings
 
 Single source of truth for my macOS shell and terminal environment:
@@ -62,7 +61,7 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 ├── tmux/tmux.conf
 ├── atuin/config.toml
 ├── yazi/                   # yazi.toml, theme, keymap, smart-enter plugin
-├── iterm2/terra.json       # iTerm2 dynamic profile (terra colors)
+├── iterm2/terra.json       # iTerm2 dynamic profile: terra colors, opacity, keys as ghostty
 └── docs/setup.md           # new-Mac walkthrough
 ```
 
@@ -71,6 +70,7 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 | In home directory | Points to |
 | --- | --- |
 | `~/.config/ghostty/config` | `~/.dotfiles/ghostty/config` |
+| `~/.config/alacritty/alacritty.toml` | `~/.dotfiles/alacritty/alacritty.toml` |
 | `~/.config/starship.toml` | `~/.dotfiles/starship/starship.toml` |
 | `~/.config/atuin/config.toml` | `~/.dotfiles/atuin/config.toml` |
 | `~/.config/yazi/yazi.toml` | `~/.dotfiles/yazi/yazi.toml` |

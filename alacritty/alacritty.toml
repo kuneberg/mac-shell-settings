@@ -89,3 +89,11 @@ multiplier = 3
 
 [bell]
 duration = 0
+
+# --- Keyboard ---
+[keyboard]
+# Shift+Enter sends ESC+CR, which Claude Code (like Option+Enter) treats
+# as "insert newline" instead of submit.
+bindings = [
+  { key = "Enter", mods = "Shift", chars = "\u001B\r" },
+]
