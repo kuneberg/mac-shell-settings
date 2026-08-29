@@ -125,3 +125,9 @@ New tool configs: add the config under `<tool>/` in this repo, link it
 in `scripts/setup-links.sh` (backup-then-symlink, idempotent), list it
 in `scripts/backup.sh`, add the package to `Brewfile`, document in
 README. Never delete user files — `link_file` backs up before linking.
+
+Exception — root-owned system files (`sudo/sudo_local` →
+`/etc/pam.d/sudo_local`) are *copied* by their own explicit script
+(`scripts/setup-sudo-touchid.sh`), never symlinked and never run from
+`install.sh`; the script backs up, merges into existing content, and
+validates before writing. Don't add `sudo` steps to `install.sh`.

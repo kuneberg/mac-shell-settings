@@ -46,6 +46,9 @@ summary() {
     printf '      git config --global user.name  "Your Name"\n'
     printf '      git config --global user.email "you@example.com"\n'
   fi
+  if ! grep -Eqs '^[[:space:]]*auth[[:space:]]+sufficient[[:space:]]+pam_tid\.so' /etc/pam.d/sudo_local; then
+    info "Touch ID for sudo is not enabled — run ./scripts/setup-sudo-touchid.sh (asks for your password once)."
+  fi
   info "Restart your terminal (or run: exec zsh) to load the new configuration."
   success "Done. Re-running this installer is always safe."
 }

@@ -24,7 +24,7 @@ The installer is **idempotent** — run it as many times as you like. It:
 5. symlinks all repo-owned configuration into place
 6. adds one managed block to `~/.zprofile` and `~/.zshrc` (never replaces them)
 7. registers `git/gitconfig` via `git config --global include.path`
-8. prints a summary
+8. prints a summary (and reminds you about the opt-in Touch ID step below)
 
 Anything already at a destination is **moved to a timestamped backup**
 (`~/.dotfiles-backup/<timestamp>/`) before being replaced. Nothing is ever
@@ -43,6 +43,7 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 │   ├── install-fonts.sh    # nerd font
 │   ├── setup-links.sh      # symlinks + ~/.config dirs
 │   ├── setup-zsh.sh        # managed blocks in ~/.zprofile / ~/.zshrc
+│   ├── setup-sudo-touchid.sh # Touch ID for sudo (explicit, asks for sudo)
 │   └── backup.sh           # snapshot all managed files on demand
 ├── zsh/
 │   ├── zprofile            # Homebrew shellenv, PATH (login shells)
@@ -62,6 +63,7 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 ├── atuin/config.toml
 ├── yazi/                   # yazi.toml, theme, keymap, smart-enter plugin
 ├── iterm2/terra.json       # iTerm2 dynamic profile: terra colors, opacity, keys as ghostty
+├── sudo/sudo_local         # PAM: Touch ID for sudo (copied to /etc/pam.d, root-owned)
 └── docs/setup.md           # new-Mac walkthrough
 ```
 
@@ -77,6 +79,7 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 | `~/.config/micro` | `~/.dotfiles/micro` (whole directory) |
 | `~/Library/Application Support/iTerm2/DynamicProfiles/terra.json` | `~/.dotfiles/iterm2/terra.json` |
 | `~/.tmux.conf` | `~/.dotfiles/tmux/tmux.conf` |
+| `/etc/pam.d/sudo_local` | root-owned **copy** of `~/.dotfiles/sudo/sudo_local` (see [Touch ID for sudo](#touch-id-for-sudo)) |
 
 `~/.zprofile` and `~/.zshrc` are *not* symlinked. Each gets exactly one
 managed block, so anything else you keep in them survives:
@@ -112,6 +115,44 @@ Implemented by the `y` wrapper in `zsh/functions.zsh` (`--cwd-file`)
 plus `yazi/keymap.toml` and the tiny `yazi/plugins/smart-enter.yazi`
 plugin. Theme (terra) and options live in `yazi/theme.toml` and
 `yazi/yazi.toml`.
+
+## Touch ID for sudo
+
+`sudo` can authenticate with Touch ID instead of your password, using
+Apple's own `pam_tid` module. This is the one step the installer does
+**not** run for you, because it needs root once:
+
+```sh
+cd ~/.dotfiles
+./scripts/setup-sudo-touchid.sh          # asks for your password via sudo
+./scripts/setup-sudo-touchid.sh --check  # status only, never asks
+sudo -k && sudo true                     # → macOS Touch ID prompt
+```
+
+What it does:
+
+- installs `sudo/sudo_local` as `/etc/pam.d/sudo_local` (mode `0444`,
+  `root:wheel`). macOS 14+ includes that file from `/etc/pam.d/sudo` and
+  keeps it across OS updates; `/etc/pam.d/sudo` itself is never edited.
+- is idempotent and preserving: if `sudo_local` already exists it is
+  copied to `~/.dotfiles-backup/<timestamp>/etc/pam.d/` first, then the
+  template's `#auth … pam_tid.so` line is uncommented or the line is
+  appended — other rules (e.g. `pam_reattach`) are left alone.
+- validates every line as a PAM rule before writing, so it can never
+  leave sudo with a broken config.
+
+The file is copied rather than symlinked on purpose: PAM config must be
+owned by root, and a link into `$HOME` would let anything running as you
+change how `sudo` authenticates. `pam_tid` is `sufficient`, so when the
+sensor is unavailable (lid closed, SSH) sudo simply falls back to the
+normal password prompt — nothing is made passwordless.
+
+Inside **tmux** the sensor is not reachable by default; if you want Touch
+ID there too, `brew install pam-reattach` and add
+`auth optional pam_reattach.so` above the `pam_tid` line (the setup
+script keeps it).
+
+To undo: `sudo rm /etc/pam.d/sudo_local` (or restore the backup copy).
 
 ## Updating
 
@@ -167,6 +208,9 @@ rm ~/.config/ghostty/config ~/.config/alacritty/alacritty.toml \
 
 # 3. Remove the git include
 git config --global --unset-all include.path ~/.dotfiles/git/gitconfig
+
+# 3b. Touch ID for sudo, if you enabled it
+sudo rm /etc/pam.d/sudo_local
 
 # 4. Optionally restore originals from ~/.dotfiles-backup/<timestamp>/
 #    and delete the repo

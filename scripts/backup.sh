@@ -22,6 +22,7 @@ TARGETS=(
   "$HOME/.config/micro/bindings.json"
   "$HOME/Library/Application Support/iTerm2/DynamicProfiles/terra.json"
   "$HOME/.gdu.yaml"
+  "/etc/pam.d/sudo_local"
 )
 
 info "Backing up managed files -> $DOTFILES_BACKUP_DIR"

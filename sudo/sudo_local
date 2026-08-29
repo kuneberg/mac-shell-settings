@@ -1,0 +1,6 @@
+# sudo_local: local config file which survives system update and is included for sudo
+# Source: ~/.dotfiles/sudo/sudo_local — installed as a root-owned copy of
+# /etc/pam.d/sudo_local by scripts/setup-sudo-touchid.sh (never symlinked).
+# Touch ID for sudo; falls through to the normal password prompt when the
+# sensor is unavailable (lid closed, SSH, tmux without pam_reattach).
+auth       sufficient     pam_tid.so

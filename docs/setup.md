@@ -47,6 +47,14 @@ wiring. It is safe to re-run if anything fails midway (e.g. network).
   `atuin/config.toml` and run `atuin sync`.
 - **tmux**: if a session was already running during install, press
   `prefix + r` (default prefix `Ctrl-b`) to reload the config.
+- **Touch ID for sudo** (opt-in, needs your password once):
+
+  ```sh
+  ./scripts/setup-sudo-touchid.sh
+  ```
+
+  Installs `/etc/pam.d/sudo_local` from `sudo/sudo_local`; see the
+  README section for what it does and how to undo it.
 
 ## 4. Verify
 
@@ -62,6 +70,10 @@ grep -c '>>> dotfiles >>>' ~/.zshrc ~/.zprofile
 
 # delta is the git pager
 git config --get core.pager
+
+# Touch ID for sudo is enabled (if you ran the step above)
+./scripts/setup-sudo-touchid.sh --check
+sudo -k && sudo true    # → Touch ID prompt
 ```
 
 If prompt icons render as boxes, make sure Ghostty is using
