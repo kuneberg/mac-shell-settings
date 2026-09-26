@@ -108,11 +108,17 @@ sorting is case-insensitive), not just any match on screen.
   the user's choice. Don't "fix" it when renaming palettes.
   Non-color keys mirror ghostty/alacritty: `Transparency` is
   1 − opacity, `Option Key Sends`/`Right Option Key Sends` 2 = Esc+,
-  `Cursor Type` 2 = block, `Keyboard Map` keys are
+  `Cursor Type` 2 = block, `Brighten Bold Text` false = ghostty's
+  `bold-is-bright` default (else bold+ANSI color renders as the bright
+  slot and `ls`/eza directories look different), `Keyboard Map` keys are
   `"0x<char>-0x<modifiers>"` (Return 0xd, Shift 0x20000) with
   `Action` 11 = send hex codes (10 = ESC + text). Window padding is a
   global advanced pref (`TerminalMargin`/`TerminalVMargin`), not
   per-profile, so it is not managed here.
+  `iterm2/Terra.itermcolors` is the same palette as an importable color
+  preset (Settings → Profiles → Colors → Color Presets → Import) for
+  applying terra to a non-dynamic profile; regenerate it from
+  `ghostty/config` when the palette changes.
 - Terminal title: zsh emits OSC 0 (`\e]0;`), not OSC 2 — iTerm2 shows
   the icon title in tabs and only renames the window on OSC 2; Ghostty
   and Alacritty treat 0 and 2 identically.

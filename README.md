@@ -63,6 +63,7 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 ├── atuin/config.toml
 ├── yazi/                   # yazi.toml, theme, keymap, smart-enter plugin
 ├── iterm2/terra.json       # iTerm2 dynamic profile: terra colors, opacity, keys as ghostty
+├── iterm2/Terra.itermcolors # same terra colors as an importable iTerm2 color preset
 ├── sudo/sudo_local         # PAM: Touch ID for sudo (copied to /etc/pam.d, root-owned)
 └── docs/setup.md           # new-Mac walkthrough
 ```
@@ -95,6 +96,12 @@ Git config is pulled in through an include, so your identity stays local:
 ```sh
 git config --global include.path ~/.dotfiles/git/gitconfig
 ```
+
+iTerm2 picks up the **Terra** dynamic profile automatically, but which
+profile is *default* is an iTerm2 preference, not something the repo can
+set: Settings → Profiles → Terra → Other Actions… → Set as Default (new
+windows will then match Ghostty). To theme a different profile instead,
+import `iterm2/Terra.itermcolors` under Profiles → Colors → Color Presets.
 
 ## Editor
 

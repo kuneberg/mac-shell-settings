@@ -138,6 +138,7 @@
         "Green Component": 0.929412,
         "Red Component": 0.960784
       },
+      "Brighten Bold Text": false,
       "Cursor Color": {
         "Alpha Component": 1,
         "Blue Component": 0.356863,
