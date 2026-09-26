@@ -120,61 +120,61 @@ read_only_style = "bg:third fg:text"
 symbol = " "
 version_format = "${raw}"
 style = "bg:fourth fg:text"
-format = '[$symbol($version) ]($style)'
+format = '[ $symbol($version) ]($style)'
 
 [golang]
 symbol = " "
 version_format = "${raw}"
 style = "bg:fourth fg:text"
-format = '[$symbol($version) ]($style)'
+format = '[ $symbol($version) ]($style)'
 
 [python]
 symbol = " "
 version_format = "${raw}"
 style = "bg:fourth fg:text"
 python_binary = ["./venv/bin/python", "./env/Scripts/python", "python", "python3", "python2"]
-format = '[$symbol($version)]($style)[ (\($virtualenv\)) ](bg:fourth fg:text)'
+format = '[ $symbol($version)]($style)[ (\($virtualenv\)) ](bg:fourth fg:text)'
 
 [conda]
 symbol = " "
 style = "bg:fourth fg:text"
 ignore_base = false
-format = '[$symbol ($environment) ]($style)'
+format = '[ $symbol ($environment) ]($style)'
 
 [haskell]
 symbol = " "
 version_format = "${raw}"
 style = "bg:fourth fg:text"
-format = '[$symbol($version) ]($style)'
+format = '[ $symbol($version) ]($style)'
 
 [java]
 symbol = " "
 version_format = "${raw}"
 style = "bg:fourth fg:text"
-format = '[$symbol($version) ]($style)'
+format = '[ $symbol($version) ]($style)'
 
 [julia]
 symbol = " "
 version_format = "${raw}"
 style = "bg:fourth fg:text"
-format = '[$symbol($version) ]($style)'
+format = '[ $symbol($version) ]($style)'
 
 [nodejs]
 symbol = " "
 version_format = "${raw}"
 style = "bg:fourth fg:text"
-format = '[$symbol($version) ]($style)'
+format = '[ $symbol($version) ]($style)'
 
 [rust]
 symbol = " "
 version_format = "${raw}"
 style = "bg:fourth fg:text"
-format = '[$symbol($version) ]($style)'
+format = '[ $symbol($version) ]($style)'
 
 [docker_context]
 symbol = " "
 style = "bg:fifth fg:text"
-format = '[$symbol $context ]($style)'
+format = '[ $symbol $context ]($style)'
 
 [git_branch]
 symbol = " "
