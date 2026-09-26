@@ -6,15 +6,10 @@ $directory\
     $conda\
     $nodejs\
     $c\
-    $golang\
     $haskell\
     $java\
     $julia\
     $rust\
-)\
-(\
-    [](fg:black bg:fifth)\
-    $docker_context\
 )\
 (\
     [](fg:black bg:third)\
@@ -122,12 +117,6 @@ version_format = "${raw}"
 style = "bg:fourth fg:text"
 format = '[ $symbol($version) ]($style)'
 
-[golang]
-symbol = " "
-version_format = "${raw}"
-style = "bg:fourth fg:text"
-format = '[ $symbol($version) ]($style)'
-
 [python]
 symbol = " "
 version_format = "${raw}"
@@ -171,12 +160,9 @@ version_format = "${raw}"
 style = "bg:fourth fg:text"
 format = '[ $symbol($version) ]($style)'
 
-[docker_context]
-symbol = " "
-style = "bg:fifth fg:text"
-format = '[ $symbol $context ]($style)'
-
 [git_branch]
+truncation_length = 12
+truncation_symbol = "…"
 symbol = " "
 style = "bg:third fg:text"
 format = '[ $symbol$branch ]($style)'
