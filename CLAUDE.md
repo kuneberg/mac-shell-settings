@@ -1,54 +1,53 @@
 # CLAUDE.md — instructions for Claude Code in this repo
 
-## Color palette (Terra)
+## Color palette (Gotham)
 
-Every tool in this repo is themed with one palette, anchored to the
-starship prompt (`starship/starship.toml`, `[palettes.terra]`).
-When adding or restyling any tool, use these colors — do not invent new ones.
+Every tool in this repo is themed with one palette: Gotham
+(terminalcolors.com/themes/gotham/default, the vim-gotham colors),
+anchored to the starship prompt (`starship/starship.toml`,
+`[palettes.gotham]`). When adding or restyling any tool, use these
+colors — do not invent new ones.
 
-### Core terra
+### Core gotham
 
 | Hex | Role | Examples |
 | --- | --- | --- |
-| `#f77d5b` | primary accent (coral) | hovered row bg (yazi), active tab, tmux session badge, fzf pointer, cursor |
-| `#556f5a` | deep accent (forest) | tmux current window, yazi parent/preview hover, gdu marked |
-| `#859e89` | light accent (sage) | cwd/path text, current line number, fzf prompt |
-| `#edc27a` | highlight (gold) | match/search highlights, selected markers, todo |
-| `#3c4a3e` | selection bg | fzf selected row, terminal selection, tmux message |
-| `#262b25` | subtle raised surface | cursor-line (micro), cursor guide |
-| `#20241f` | surface | tmux status bar bg, inactive tab bg |
-| `#303a31` | border, dark | fzf border, tmux pane border, indent guides |
-| `#556052` | border, light | yazi pane borders |
+| `#33859e` | primary accent (cyan) | hovered row bg (yazi), active tab, tmux session badge, fzf pointer, prompt `❯` |
+| `#245361` | deep accent (base4) | tmux current window, yazi parent/preview hover, gdu marked, borders (light) |
+| `#599cab` | light accent (base5) | cwd/path text, current line number, fzf prompt |
+| `#edb443` | highlight (yellow) | match/search highlights, selected markers, todo |
+| `#0a3749` | selection bg (base3) | fzf selected row, terminal selection, tmux message, borders (dark) |
+| `#11151c` | subtle raised surface (base1) | cursor-line (micro), cursor guide, cursor text |
+| `#091f2e` | surface (base2) | tmux status bar bg, inactive tab bg, gdu header/footer |
 
 ### Text
 
 | Hex | Role |
 | --- | --- |
-| `#f5ede4` | bright text — on forest/dark accent backgrounds |
-| `#2b211b` | ink text — on light accent backgrounds (coral, gold, sage, rose, pink, teal) |
-| `#e8d7d0` | body text |
-| `#a89a8f` | muted text (dates, inactive items) |
-| `#736a5f` | faint (autosuggestion ghost text, line numbers) |
+| `#d3ebe9` | bright text (base7) — on deep/dark accent backgrounds |
+| `#0c1014` | ink text (base0) — on light accents (cyan, yellow, green, orange) |
+| `#99d1ce` | body text (base6), also the terminal cursor |
+| `#599cab` | muted text (dates, inactive items) |
+| `#245361` | faint (autosuggestion ghost text, line numbers, comments) |
 
 ### Semantic accents
 
-red `#d0686e` · green `#859e89` · yellow `#edc27a` · orange `#f77d5b` ·
-pink `#e09b9f` · teal `#84a89a` · blue `#7e9ca8` · mauve `#b48ea3` ·
-comment grey `#7d8578`
+red `#c23127` · green `#2aa889` · yellow `#edb443` · orange `#d26937` ·
+magenta `#888ca6` · violet `#4e5166` · cyan `#33859e` · blue `#195466`
 
 ### Backgrounds
 
-- Ghostty: `#161a16` (green-black), opacity 0.70, blur
-- Alacritty: same as Ghostty (`#161a16`, opacity 0.70, blur) — `alacritty/alacritty.toml`
-- iTerm2: same as Ghostty (`#161a16`, transparency 0.30 = opacity 0.70,
-  blur) — `iterm2/terra.json`
-- All terminals use the custom terra ANSI-16 palette, defined in
-  `ghostty/config` and mirrored in `alacritty/alacritty.toml` and
-  `iterm2/terra.json`:
-  0 `#414a42` · 1 `#d0686e` · 2 `#859e89` · 3 `#edc27a` · 4 `#7e9ca8` ·
-  5 `#b48ea3` · 6 `#84a89a` · 7 `#d6c8bd` · 8 `#5f695c` · 9 `#dd8288` ·
-  10 `#9ab3a0` · 11 `#f4d49a` · 12 `#94b2bd` · 13 `#c9a5b8` ·
-  14 `#9dc0b0` · 15 `#a89a8f`
+- Ghostty: `#0c1014`, opacity 0.70, blur
+- Alacritty: same as Ghostty — `alacritty/alacritty.toml`
+- iTerm2: same as Ghostty (transparency 0.30 = opacity 0.70, blur) —
+  `iterm2/gotham.json`
+- All terminals use the Gotham ANSI-16 palette exactly as published,
+  defined in `ghostty/config` and mirrored in `alacritty/alacritty.toml`
+  and `iterm2/gotham.json`. Bright colors equal the normal ones:
+  0/8 `#0c1014` · 1/9 `#c23127` · 2/10 `#2aa889` · 3/11 `#edb443` ·
+  4/12 `#195466` · 5/13 `#4e5166` · 6/14 `#33859e` · 7/15 `#99d1ce`.
+  ANSI black/bright-black equal the background, so never use them (or
+  ANSI names that resolve to them) for text — use hex `#245361` instead.
 - TUI backgrounds should stay transparent (`bg:-1` / unset) so the
   terminal's translucent background shows through
 
@@ -58,22 +57,23 @@ comment grey `#7d8578`
   `ls`/terminal-wide conventions — e.g. yazi's whole `[filetype]` list
   uses ANSI names so it always matches eza via the terminal palette
   (eza emits plain ANSI-16 codes). Use **hex** for chrome and accents.
-- Light accents (coral/gold/sage/rose/pink/teal) take ink text `#2b211b`;
-  forest and dark surfaces take bright cream `#f5ede4`. Never body-grey
-  on accent.
-- The starship palette file is the source of truth for the gradient
-  (first–eighth, coral → rose). The gradient is light, so starship
-  segment text is ink (`text = "#2B211B"`); its `error` red `#c1121f`
-  is starship-only.
+- Light accents (cyan/yellow/green/orange) take ink text `#0c1014`;
+  deep and dark surfaces (base3/base4, red) take bright `#d3ebe9`.
+- The starship palette file is the source of truth for the prompt
+  gradient (first–eighth, base4 `#245361` → base3 `#0a3749`). The
+  gradient is dark, so segment text is body `#99d1ce`; the prompt
+  character uses the per-palette `accent` key (eighth is too dark).
+  Other palettes (opal/amethyst/terra/ruby) are kept for switching.
+- bat uses the built-in `Nord` theme (closest to gotham).
 
 ## Verifying TUI colors
 
 Run the tool in a detached tmux session and grep decoded RGB triplets
-(`#f77d5b` → `247;125;91`):
+(`#33859e` → `51;133;158`):
 
 ```sh
 tmux -L t new-session -d -x 100 -y 25 "<tool>" && sleep 2
-tmux -L t capture-pane -e -p | grep -c "48;2;247;125;91"   # bg match
+tmux -L t capture-pane -e -p | grep -c "48;2;51;133;158"   # bg match
 tmux -L t send-keys q; tmux -L t kill-server
 ```
 
@@ -98,14 +98,15 @@ sorting is case-insensitive), not just any match on screen.
   `style.result-row` (`number-color`, `directory-color`), `style.header`
   and `style.footer` (`text-color`, `background-color`, footer also
   `number-color`). Color names go through tcell's W3C table (NOT the
-  terminal ANSI palette), so to match `ls` use the terra hex values of
+  terminal ANSI palette), so to match `ls` use the gotham hex values of
   the ANSI colors. The brew binary is `gdu-go` (aliased to `gdu`).
-- iTerm2: colors live in the dynamic profile `iterm2/terra.json`
+- iTerm2: colors live in the dynamic profile `iterm2/gotham.json`
   (sRGB components 0–1); it hot-reloads on save. The default-profile
   choice is a user pref, not repo-managed. The profile `Guid` is
   intentionally still `dotfiles-amethyst` (its original value) — iTerm2
   keys the default-profile pref on the Guid, so changing it would reset
-  the user's choice. Don't "fix" it when renaming palettes.
+  the user's choice (it survived amethyst → terra → gotham). Don't "fix" it
+  when renaming palettes.
   Non-color keys mirror ghostty/alacritty: `Transparency` is
   1 − opacity, `Option Key Sends`/`Right Option Key Sends` 2 = Esc+,
   `Cursor Type` 2 = block, `Brighten Bold Text` false = ghostty's
@@ -115,10 +116,11 @@ sorting is case-insensitive), not just any match on screen.
   `Action` 11 = send hex codes (10 = ESC + text). Window padding is a
   global advanced pref (`TerminalMargin`/`TerminalVMargin`), not
   per-profile, so it is not managed here.
-  `iterm2/Terra.itermcolors` is the same palette as an importable color
+  `iterm2/Gotham.itermcolors` is the same palette as an importable color
   preset (Settings → Profiles → Colors → Color Presets → Import) for
-  applying terra to a non-dynamic profile; regenerate it from
-  `ghostty/config` when the palette changes.
+  applying gotham to a non-dynamic profile (downloaded verbatim from
+  terminalcolors.com); regenerate it from `ghostty/config` when the
+  palette changes.
 - Terminal title: zsh emits OSC 0 (`\e]0;`), not OSC 2 — iTerm2 shows
   the icon title in tabs and only renames the window on OSC 2; Ghostty
   and Alacritty treat 0 and 2 identically.

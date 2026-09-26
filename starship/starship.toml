@@ -29,9 +29,10 @@ $character\
 #   amethyst: purple.
 #   terra: sage green & terracotta.
 #   ruby: red.
+#   gotham: dark teal (terminalcolors.com/themes/gotham).
 # To change the colors: change to the corresponding palette.
 
-palette = "terra"
+palette = "gotham"
 
 # Disables the blank line at the start of the prompt
 add_newline = true
@@ -51,6 +52,7 @@ error = "#C1121F"
 black = "#272D37"
 text = "#CBF4F8"
 github = "#B02B10"
+accent = "#3A7EAE"
 
 [palettes.amethyst]
 first = "#6E43C4"
@@ -66,6 +68,7 @@ error = "#C1121F"
 black = "#272D37"
 text = "#F2EBFF"
 github = "#B02B10"
+accent = "#5A359E"
 
 [palettes.terra]
 first = "#F77D5B"
@@ -81,6 +84,24 @@ error = "#C1121F"
 black = "#2B211B"
 text = "#2B211B"
 github = "#551A0E"
+accent = "#D0686E"
+
+[palettes.gotham]
+first = "#245361"
+second = "#204F5E"
+third = "#1D4B5A"
+fourth = "#194757"
+fifth = "#154353"
+sixth = "#113F50"
+seventh = "#0E3B4C"
+eighth = "#0A3749"
+error = "#C23127"
+# Text color (the gradient is dark, so segment text is gotham fg):
+black = "#0C1014"
+text = "#99D1CE"
+github = "#EDB443"
+# Prompt character (the dark eighth would vanish on the background):
+accent = "#33859E"
 
 [palettes.ruby]
 first = "#873739"
@@ -96,6 +117,7 @@ error = "#C1121F"
 black = "#272D37"
 text = "#F2EBFF"
 github = "#450920"
+accent = "#98393F"
 
 [directory]
 style = "bg:third fg:text"
@@ -182,5 +204,5 @@ style = "bg:eighth fg:text"
 format = '[  $duration ]($style)'
 
 [character]
-success_symbol = "[❯](bold fg:eighth)"
+success_symbol = "[❯](bold fg:accent)"
 error_symbol = "[❯](bold fg:error)"

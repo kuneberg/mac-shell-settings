@@ -2,7 +2,7 @@
 # Docs: https://alacritty.org/config-alacritty.html
 # Linked to ~/.config/alacritty/alacritty.toml — reloads live on save.
 #
-# Mirrors ghostty/config: same font, terra palette, 0.70 opacity + blur.
+# Mirrors ghostty/config: same font, gotham palette, 0.70 opacity + blur.
 # Ghostty-only things with no Alacritty equivalent: font-thicken,
 # macos-titlebar-style = tabs (no tabs — use tmux), window-save-state,
 # shell-integration (zsh handles it), confirm-close-surface.
@@ -35,40 +35,40 @@ startup_mode = "Windowed"
 dynamic_title = true
 option_as_alt = "Both"
 
-# --- Theme (Terra) ---
-# Same ANSI-16 palette as ghostty/config and iterm2/terra.json.
+# --- Theme (Gotham) ---
+# Same ANSI-16 palette as ghostty/config and iterm2/gotham.json.
 [colors.primary]
-foreground = "#e8d7d0"
-# Green-black background
-background = "#161a16"
+foreground = "#99d1ce"
+# Gotham near-black background
+background = "#0c1014"
 
 [colors.cursor]
-cursor = "#f77d5b"
-text = "#161a16"
+cursor = "#99d1ce"
+text = "#11151c"
 
 [colors.selection]
-background = "#3c4a3e"
-text = "#f5ede4"
+background = "#0a3749"
+text = "#99d1ce"
 
 [colors.normal]
-black = "#414a42"
-red = "#d0686e"
-green = "#859e89"
-yellow = "#edc27a"
-blue = "#7e9ca8"
-magenta = "#b48ea3"
-cyan = "#84a89a"
-white = "#d6c8bd"
+black = "#0c1014"
+red = "#c23127"
+green = "#2aa889"
+yellow = "#edb443"
+blue = "#195466"
+magenta = "#4e5166"
+cyan = "#33859e"
+white = "#99d1ce"
 
 [colors.bright]
-black = "#5f695c"
-red = "#dd8288"
-green = "#9ab3a0"
-yellow = "#f4d49a"
-blue = "#94b2bd"
-magenta = "#c9a5b8"
-cyan = "#9dc0b0"
-white = "#a89a8f"
+black = "#0c1014"
+red = "#c23127"
+green = "#2aa889"
+yellow = "#edb443"
+blue = "#195466"
+magenta = "#4e5166"
+cyan = "#33859e"
+white = "#99d1ce"
 
 # --- Cursor & mouse ---
 [cursor]

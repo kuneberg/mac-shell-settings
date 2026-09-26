@@ -51,9 +51,9 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 │   ├── aliases.zsh
 │   ├── exports.zsh
 │   └── functions.zsh
-├── starship/starship.toml  # terra prompt
+├── starship/starship.toml  # gotham prompt
 ├── ghostty/config
-├── alacritty/alacritty.toml # same font / terra colors / opacity as ghostty
+├── alacritty/alacritty.toml # same font / gotham colors / opacity as ghostty
 ├── git/gitconfig           # delta, micro as editor, aliases — no identity
 ├── micro/                  # default $EDITOR — see micro/README.md
 │   ├── settings.json
@@ -62,8 +62,8 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 ├── tmux/tmux.conf
 ├── atuin/config.toml
 ├── yazi/                   # yazi.toml, theme, keymap, smart-enter plugin
-├── iterm2/terra.json       # iTerm2 dynamic profile: terra colors, opacity, keys as ghostty
-├── iterm2/Terra.itermcolors # same terra colors as an importable iTerm2 color preset
+├── iterm2/gotham.json      # iTerm2 dynamic profile: gotham colors, opacity, keys as ghostty
+├── iterm2/Gotham.itermcolors # same gotham colors as an importable iTerm2 color preset
 ├── sudo/sudo_local         # PAM: Touch ID for sudo (copied to /etc/pam.d, root-owned)
 └── docs/setup.md           # new-Mac walkthrough
 ```
@@ -78,7 +78,7 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 | `~/.config/atuin/config.toml` | `~/.dotfiles/atuin/config.toml` |
 | `~/.config/yazi/yazi.toml` | `~/.dotfiles/yazi/yazi.toml` |
 | `~/.config/micro` | `~/.dotfiles/micro` (whole directory) |
-| `~/Library/Application Support/iTerm2/DynamicProfiles/terra.json` | `~/.dotfiles/iterm2/terra.json` |
+| `~/Library/Application Support/iTerm2/DynamicProfiles/gotham.json` | `~/.dotfiles/iterm2/gotham.json` |
 | `~/.tmux.conf` | `~/.dotfiles/tmux/tmux.conf` |
 | `/etc/pam.d/sudo_local` | root-owned **copy** of `~/.dotfiles/sudo/sudo_local` (see [Touch ID for sudo](#touch-id-for-sudo)) |
 
@@ -97,11 +97,11 @@ Git config is pulled in through an include, so your identity stays local:
 git config --global include.path ~/.dotfiles/git/gitconfig
 ```
 
-iTerm2 picks up the **Terra** dynamic profile automatically, but which
+iTerm2 picks up the **Gotham** dynamic profile automatically, but which
 profile is *default* is an iTerm2 preference, not something the repo can
-set: Settings → Profiles → Terra → Other Actions… → Set as Default (new
+set: Settings → Profiles → Gotham → Other Actions… → Set as Default (new
 windows will then match Ghostty). To theme a different profile instead,
-import `iterm2/Terra.itermcolors` under Profiles → Colors → Color Presets.
+import `iterm2/Gotham.itermcolors` under Profiles → Colors → Color Presets.
 
 ## Editor
 
@@ -120,7 +120,7 @@ Launch [Yazi](https://yazi-rs.github.io/) with `y`:
 
 Implemented by the `y` wrapper in `zsh/functions.zsh` (`--cwd-file`)
 plus `yazi/keymap.toml` and the tiny `yazi/plugins/smart-enter.yazi`
-plugin. Theme (terra) and options live in `yazi/theme.toml` and
+plugin. Theme (gotham) and options live in `yazi/theme.toml` and
 `yazi/yazi.toml`.
 
 ## Touch ID for sudo

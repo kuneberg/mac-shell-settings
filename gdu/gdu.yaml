@@ -8,24 +8,24 @@ ignore-dirs:
   # OrbStack's virtual filesystem: huge, slow to walk, sizes are not real disk usage
   - /Users/maks/OrbStack
 
-# Terra accents. result-row matches `ls` (eza): gdu can't reference the
+# Gotham accents. result-row matches `ls` (eza): gdu can't reference the
 # terminal ANSI palette (tcell names resolve to W3C RGB, not ANSI), so
-# these are the terra hex values of ANSI blue (dirs) and green (sizes).
+# these are the gotham hex values of ANSI blue (dirs) and green (sizes).
 style:
   selected-row:
-    text-color: "#f5ede4"
-    background-color: "#3c4a3e"
+    text-color: "#d3ebe9"
+    background-color: "#0a3749"
   marked:
-    text-color: "#f5ede4"
-    background-color: "#556f5a"
+    text-color: "#d3ebe9"
+    background-color: "#245361"
   result-row:
-    number-color: "#859e89"
-    directory-color: "#7e9ca8"
+    number-color: "#2aa889"
+    directory-color: "#195466"
   # Header/footer like the tmux status bar: body text on surface, gold numbers
   header:
-    text-color: "#e8d7d0"
-    background-color: "#20241f"
+    text-color: "#99d1ce"
+    background-color: "#091f2e"
   footer:
-    text-color: "#e8d7d0"
-    background-color: "#20241f"
-    number-color: "#edc27a"
+    text-color: "#99d1ce"
+    background-color: "#091f2e"
+    number-color: "#edb443"

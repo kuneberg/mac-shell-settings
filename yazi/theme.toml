@@ -1,46 +1,46 @@
-# Yazi theme — terra palette, matches starship/tmux/fzf.
+# Yazi theme — gotham palette, matches starship/tmux/fzf.
 # Overrides are merged over yazi's built-in default theme.
 # Linked to ~/.config/yazi/theme.toml
 
 [mgr]
-cwd = { fg = "#859e89" }
-find_keyword = { fg = "#edc27a", bold = true, italic = true }
-find_position = { fg = "#e09b9f", bg = "reset", bold = true, italic = true }
-marker_copied = { fg = "#859e89", bg = "#859e89" }
-marker_cut = { fg = "#d0686e", bg = "#d0686e" }
-marker_marked = { fg = "#84a89a", bg = "#84a89a" }
-marker_selected = { fg = "#edc27a", bg = "#edc27a" }
-count_copied = { fg = "#2b211b", bg = "#859e89" }
-count_cut = { fg = "#2b211b", bg = "#d0686e" }
-count_selected = { fg = "#2b211b", bg = "#edc27a" }
-border_style = { fg = "#556052" }
+cwd = { fg = "#599cab" }
+find_keyword = { fg = "#edb443", bold = true, italic = true }
+find_position = { fg = "#d26937", bg = "reset", bold = true, italic = true }
+marker_copied = { fg = "#2aa889", bg = "#2aa889" }
+marker_cut = { fg = "#c23127", bg = "#c23127" }
+marker_marked = { fg = "#33859e", bg = "#33859e" }
+marker_selected = { fg = "#edb443", bg = "#edb443" }
+count_copied = { fg = "#0c1014", bg = "#2aa889" }
+count_cut = { fg = "#d3ebe9", bg = "#c23127" }
+count_selected = { fg = "#0c1014", bg = "#edb443" }
+border_style = { fg = "#245361" }
 
 # Hovered-row highlight (yazi 26.x: [indicator], not [mgr].hovered)
 [indicator]
-current = { fg = "#2b211b", bg = "#f77d5b" }
-parent = { fg = "#f5ede4", bg = "#556f5a" }
-preview = { fg = "#f5ede4", bg = "#556f5a" }
+current = { fg = "#0c1014", bg = "#33859e" }
+parent = { fg = "#d3ebe9", bg = "#245361" }
+preview = { fg = "#d3ebe9", bg = "#245361" }
 
 [tabs]
-active = { fg = "#2b211b", bg = "#f77d5b", bold = true }
-inactive = { fg = "#a89a8f", bg = "#20241f" }
+active = { fg = "#0c1014", bg = "#33859e", bold = true }
+inactive = { fg = "#599cab", bg = "#091f2e" }
 
 [mode]
-normal_main = { fg = "#2b211b", bg = "#f77d5b", bold = true }
-normal_alt = { fg = "#859e89", bg = "#3c4a3e" }
-select_main = { fg = "#2b211b", bg = "#84a89a", bold = true }
-select_alt = { fg = "#84a89a", bg = "#3c4a3e" }
-unset_main = { fg = "#2b211b", bg = "#e09b9f", bold = true }
-unset_alt = { fg = "#e09b9f", bg = "#3c4a3e" }
+normal_main = { fg = "#0c1014", bg = "#33859e", bold = true }
+normal_alt = { fg = "#599cab", bg = "#0a3749" }
+select_main = { fg = "#0c1014", bg = "#2aa889", bold = true }
+select_alt = { fg = "#2aa889", bg = "#0a3749" }
+unset_main = { fg = "#0c1014", bg = "#d26937", bold = true }
+unset_alt = { fg = "#d26937", bg = "#0a3749" }
 
 [status]
-perm_type = { fg = "#859e89" }
-perm_read = { fg = "#edc27a" }
-perm_write = { fg = "#d0686e" }
-perm_exec = { fg = "#84a89a" }
-perm_sep = { fg = "#736a5f" }
-progress_normal = { fg = "#f77d5b", bg = "#20241f" }
-progress_error = { fg = "#d0686e", bg = "#20241f" }
+perm_type = { fg = "#599cab" }
+perm_read = { fg = "#edb443" }
+perm_write = { fg = "#c23127" }
+perm_exec = { fg = "#33859e" }
+perm_sep = { fg = "#245361" }
+progress_normal = { fg = "#33859e", bg = "#091f2e" }
+progress_error = { fg = "#c23127", bg = "#091f2e" }
 
 # File-list colors, matching `ls` (eza). eza emits plain ANSI-16 codes,
 # so every rule uses ANSI names — both tools then resolve through the
@@ -64,12 +64,12 @@ rules = [
     { mime = "application/{pdf,doc,rtf}", fg = "green" },
     { url = "*.{py,rs,go,c,h,cc,cpp,hpp,js,jsx,ts,tsx,css,java,kt,rb,php,lua,swift,scala,zig}", fg = "yellow", bold = true },
     { url = "*/", fg = "blue", bold = true },
-    { url = "*", fg = "#e8d7d0" },
+    { url = "*", fg = "#99d1ce" },
 ]
 
 # Icons: yazi's default glyph set with every hardcoded fg stripped — an icon
 # without fg inherits the file's own color, so icons automatically follow
-# the [filetype] rules above (and therefore `ls`/the terra palette).
+# the [filetype] rules above (and therefore `ls`/the gotham palette).
 # Regenerated from yazi's preset theme-dark.toml with: s/, fg = "[^"]*"//g
 [icon]
 globs = []

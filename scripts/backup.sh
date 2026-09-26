@@ -20,7 +20,7 @@ TARGETS=(
   "$HOME/.config/yazi/keymap.toml"
   "$HOME/.config/micro/settings.json"
   "$HOME/.config/micro/bindings.json"
-  "$HOME/Library/Application Support/iTerm2/DynamicProfiles/terra.json"
+  "$HOME/Library/Application Support/iTerm2/DynamicProfiles/gotham.json"
   "$HOME/.gdu.yaml"
   "/etc/pam.d/sudo_local"
 )
