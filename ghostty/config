@@ -39,9 +39,9 @@ selection-foreground = #99d1ce
 window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
-# tabs: the tab bar replaces the window title and sits in the titlebar, drawn
-# over the terminal background (gotham, 0.70 opacity) so it stays translucent
-macos-titlebar-style = tabs
+# transparent: titlebar + tab bar take the terminal background (gotham, 0.70 opacity).
+# "tabs" (tab bar inside the titlebar) renders broken on this macOS — avoid.
+macos-titlebar-style = transparent
 # Dock/app icon: the "retro" variant of the Ghostty icon (needs app restart)
 macos-icon = retro
 window-save-state = always
