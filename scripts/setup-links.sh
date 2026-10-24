@@ -8,16 +8,14 @@ set -euo pipefail
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/utils.sh"
 
 info "Creating ~/.config directories..."
-mkdir -p "$HOME/.config/ghostty" "$HOME/.config/alacritty" "$HOME/.config/atuin" "$HOME/.config/yazi"
+mkdir -p "$HOME/.config/ghostty" "$HOME/.config/alacritty" "$HOME/.config/atuin"
 
 link_file "$DOTFILES_DIR/ghostty/config"         "$HOME/.config/ghostty/config"
 link_file "$DOTFILES_DIR/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
 link_file "$DOTFILES_DIR/starship/starship.toml" "$HOME/.config/starship.toml"
 link_file "$DOTFILES_DIR/atuin/config.toml"      "$HOME/.config/atuin/config.toml"
-link_file "$DOTFILES_DIR/yazi/yazi.toml"         "$HOME/.config/yazi/yazi.toml"
-link_file "$DOTFILES_DIR/yazi/theme.toml"        "$HOME/.config/yazi/theme.toml"
-link_file "$DOTFILES_DIR/yazi/keymap.toml"       "$HOME/.config/yazi/keymap.toml"
-link_file "$DOTFILES_DIR/yazi/plugins"           "$HOME/.config/yazi/plugins"
+# lf links its whole config directory (lfrc, colors, icons, previewer)
+link_file "$DOTFILES_DIR/lf"                     "$HOME/.config/lf"
 link_file "$DOTFILES_DIR/tmux/tmux.conf"         "$HOME/.tmux.conf"
 # micro links its whole config directory (settings, bindings, colorschemes)
 link_file "$DOTFILES_DIR/micro"                  "$HOME/.config/micro"

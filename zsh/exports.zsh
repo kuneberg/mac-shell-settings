@@ -24,7 +24,7 @@ export BAT_THEME="Nord"
 # eza
 export EZA_ICONS_AUTO=1
 # README/Makefile ("build files") bold yellow without eza's default underline,
-# matching yazi's filetype rules
+# matching lf's colors file
 export EZA_COLORS="bu=1;33"
 
 # fzf — use fd, follow symlinks, respect .gitignore; Gotham colors

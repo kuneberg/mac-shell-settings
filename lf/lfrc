@@ -1,0 +1,71 @@
+# lf — terminal file manager. Linked (whole lf/ directory) to ~/.config/lf
+#
+# Enter on a directory -> quit INTO it: the shell wrapper in zsh/functions.zsh
+# sets $LF_CD_FILE, enter-or-open writes the directory there and quits, the
+# wrapper cds. Enter on a file -> open it. q / Esc -> quit, shell stays put.
+
+set shell sh
+set shellopts '-eu'
+set ifs "\n"
+
+# --- behaviour (mirrors the previous yazi setup) ---
+set hidden true
+set dirfirst true
+set sortby natural
+set info size
+set dircounts true
+set ratios 1:3:4
+set scrolloff 8
+set period 1
+set incsearch true
+set ignorecase true
+set smartcase true
+set tabstop 2
+set icons true
+set drawbox true
+set previewer ~/.config/lf/preview.sh
+
+# --- gotham chrome (file colors live in ./colors) ---
+# hovered row: cyan #33859e bg, ink #0c1014 text
+set cursoractivefmt  "\033[38;2;12;16;20;48;2;51;133;158m"
+# parent / preview hover: base4 #245361 bg, bright #d3ebe9 text
+set cursorparentfmt  "\033[38;2;211;235;233;48;2;36;83;97m"
+set cursorpreviewfmt "\033[38;2;211;235;233;48;2;36;83;97m"
+# box borders: base4
+set borderfmt "\033[38;2;36;83;97m"
+# prompt line: path in base5 #599cab, file in body #99d1ce
+set promptfmt "\033[38;2;89;156;171m%d\033[0m\033[1;38;2;153;209;206m%f\033[0m"
+set errorfmt "\033[38;2;194;49;39m"
+
+# --- commands ---
+cmd enter-or-open &{{
+    if [ -d "$f" ]; then
+        if [ -n "${LF_CD_FILE:-}" ]; then
+            printf '%s' "$f" > "$LF_CD_FILE"
+        fi
+        lf -remote "send $id quit"
+    else
+        lf -remote "send $id open"
+    fi
+}}
+
+cmd mkdir %mkdir -p -- "$@"
+cmd touch %touch -- "$@"
+
+# --- keys ---
+map <enter> enter-or-open
+map q       quit
+map <esc>   quit
+map e       $$EDITOR "$f"
+map i       $$PAGER "$f"
+map .       set hidden!
+map <c-r>   reload
+map a       push :mkdir<space>
+map A       push :touch<space>
+map x       cut
+map y       copy
+map p       paste
+map D       delete
+map r       rename
+map gh      cd ~
+map gw      cd ~/Work

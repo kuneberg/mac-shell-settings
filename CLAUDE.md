@@ -12,8 +12,8 @@ colors — do not invent new ones.
 
 | Hex | Role | Examples |
 | --- | --- | --- |
-| `#33859e` | primary accent (cyan) | hovered row bg (yazi), active tab, tmux session badge, fzf pointer, prompt `❯` |
-| `#245361` | deep accent (base4) | tmux current window, yazi parent/preview hover, gdu marked, borders (light) |
+| `#33859e` | primary accent (cyan) | hovered row bg (lf), active tab, tmux session badge, fzf pointer, prompt `❯` |
+| `#245361` | deep accent (base4) | tmux current window, lf parent/preview hover, gdu marked, borders (light) |
 | `#599cab` | light accent (base5) | cwd/path text, current line number, fzf prompt |
 | `#edb443` | highlight (yellow) | match/search highlights, selected markers, todo |
 | `#0a3749` | selection bg (base3) | fzf selected row, terminal selection, tmux message, borders (dark) |
@@ -54,8 +54,8 @@ magenta `#888ca6` · violet `#4e5166` · cyan `#33859e` · blue `#195466`
 ## Theming rules
 
 - Use **ANSI color names** (`blue`, `red`) when the goal is matching
-  `ls`/terminal-wide conventions — e.g. yazi's whole `[filetype]` list
-  uses ANSI names so it always matches eza via the terminal palette
+  `ls`/terminal-wide conventions — e.g. lf's whole `colors` file
+  uses ANSI codes so it always matches eza via the terminal palette
   (eza emits plain ANSI-16 codes). Use **hex** for chrome and accents.
 - Light accents (cyan/yellow/green/orange) take ink text `#0c1014`;
   deep and dark surfaces (base3/base4, red) take bright `#d3ebe9`.
@@ -84,22 +84,24 @@ tmux -L t capture-pane -e -p | grep -c "48;2;51;133;158"   # bg match
 tmux -L t send-keys q; tmux -L t kill-server
 ```
 
-Check the row that is actually styled (yazi hovers the first item —
-sorting is case-insensitive), not just any match on screen.
+Check the row that is actually styled (lf hovers the first item —
+dirs first, natural sort), not just any match on screen.
 
 ## Known schema gotchas
 
-- yazi 26.x: hover styling lives in `[indicator]` (`current`/`parent`/
-  `preview`), NOT `[mgr] hovered`; `[filetype]` rules use `url =` (not
-  `name =`) and REPLACE the defaults — always end with fallbacks.
-  Unknown keys are silently ignored; validate with `yazi --debug`.
-- yazi icons: an `[icon]` rule without `fg` inherits the file's own
-  color, so the theme's icon tables are yazi's default glyphs with every
-  hardcoded fg stripped (regeneration note in `yazi/theme.toml`). Url
-  globs in `[filetype]` match the full path — basename patterns need a
-  `**/` prefix (`**/README*`), and `*` alone can't nest inside braces.
+- lf: hover/chrome colors are options in `lfrc` (`cursoractivefmt`,
+  `cursorparentfmt`, `cursorpreviewfmt`, `borderfmt`, `promptfmt`,
+  `statfmt`) holding raw SGR escapes; truecolor needs `COLORTERM=truecolor`
+  (all three terminals set it). File colors live in the `colors` file:
+  one `pattern code` pair per line, NO brace expansion, matched full path >
+  dir name (`.git/`) > file type (`di`, `ex`…) > name > basename >
+  extension > `fi`. Unknown options abort startup with the error on the
+  bottom line — test in detached tmux (above). `lf -doc` is the manual.
+- lf icons: the `icons` file uses two columns only (pattern, glyph); a
+  third column would hardcode a color, so leaving it off makes every
+  icon inherit the file's color from `colors` (and so from `ls`).
 - eza's README/Makefile underline is disabled via `EZA_COLORS="bu=1;33"`
-  in exports.zsh, matching yazi's filetype rules.
+  in exports.zsh, matching lf's colors file.
 - micro: hex colorschemes need `MICRO_TRUECOLOR=1` (set in exports.zsh).
 - gdu: themeable keys are `style.selected-row`, `style.marked`,
   `style.result-row` (`number-color`, `directory-color`), `style.header`

@@ -1,0 +1,111 @@
+# lf file colors — matches `ls` (eza). Linked via ~/.config/lf/colors
+#
+# eza emits plain ANSI-16 codes, so every rule here uses ANSI codes too:
+# both tools resolve through the terminal's gotham palette and always agree.
+# Only the default text is hex (body #99d1ce) — the terminal's ANSI 7 is the
+# same color. One pattern per line, no brace expansion. Match order:
+# full path > dir name > file type > name > basename > extension > fi.
+#
+# eza classes: dir=bold blue, exec=bold green, link=cyan, broken=red,
+# image=magenta, video=bold magenta, audio=cyan, archive=red, doc=green,
+# source=bold yellow, README/Makefile=bold yellow (eza's underline dropped).
+
+# --- file types ---
+ln  36
+or  31
+tw  01;34
+ow  01;34
+st  01;34
+di  01;34
+pi  33
+so  01;35
+bd  01;33
+cd  01;33
+su  01;32
+sg  01;32
+ex  01;32
+fi  38;2;153;209;206
+
+# --- build files ---
+README*         01;33
+Makefile        01;33
+makefile        01;33
+CMakeLists.txt  01;33
+Dockerfile      01;33
+
+# --- source: bold yellow ---
+*.py    01;33
+*.rs    01;33
+*.go    01;33
+*.c     01;33
+*.h     01;33
+*.cc    01;33
+*.cpp   01;33
+*.hpp   01;33
+*.js    01;33
+*.jsx   01;33
+*.ts    01;33
+*.tsx   01;33
+*.css   01;33
+*.java  01;33
+*.kt    01;33
+*.rb    01;33
+*.php   01;33
+*.lua   01;33
+*.swift 01;33
+*.scala 01;33
+*.zig   01;33
+*.sh    01;33
+*.zsh   01;33
+
+# --- images: magenta ---
+*.png   35
+*.jpg   35
+*.jpeg  35
+*.gif   35
+*.svg   35
+*.webp  35
+*.bmp   35
+*.ico   35
+*.heic  35
+
+# --- video: bold magenta ---
+*.mp4   01;35
+*.mkv   01;35
+*.mov   01;35
+*.avi   01;35
+*.webm  01;35
+*.m4v   01;35
+
+# --- audio: cyan ---
+*.mp3   36
+*.flac  36
+*.wav   36
+*.ogg   36
+*.m4a   36
+*.aac   36
+
+# --- archives: red ---
+*.zip   31
+*.rar   31
+*.7z    31
+*.tar   31
+*.gz    31
+*.tgz   31
+*.xz    31
+*.zst   31
+*.bz2   31
+*.tbz2  31
+*.lz    31
+*.lzma  31
+*.dmg   31
+*.pkg   31
+*.iso   31
+
+# --- documents: green ---
+*.pdf   32
+*.doc   32
+*.docx  32
+*.rtf   32
+*.odt   32
+*.epub  32

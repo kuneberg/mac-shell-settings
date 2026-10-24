@@ -12,13 +12,15 @@ up() {
   cd "${dir:-.}"
 }
 
-# y — yazi that leaves the shell in yazi's last directory
-# (official wrapper from https://yazi-rs.github.io/docs/quick-start)
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	command yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+# lf — file manager that can leave the shell in the directory you picked.
+# Enter on a directory quits into it (lfrc's enter-or-open writes the path
+# to $LF_CD_FILE); q / Esc quit and the shell stays where it was.
+lf() {
+	local tmp dir
+	tmp="$(mktemp -t "lf-cd.XXXXXX")"
+	LF_CD_FILE="$tmp" command lf "$@"
+	dir="$(<"$tmp")"
+	[ -n "$dir" ] && [ -d "$dir" ] && [ "$dir" != "$PWD" ] && builtin cd -- "$dir"
 	command rm -f -- "$tmp"
 }
 

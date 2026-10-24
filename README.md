@@ -1,7 +1,7 @@
 # mac-shell-settings
 
 Single source of truth for my macOS shell and terminal environment:
-**zsh + Ghostty + Starship + Homebrew**, plus Alacritty, micro, tmux, atuin, yazi, git, Claude Code
+**zsh + Ghostty + Starship + Homebrew**, plus Alacritty, micro, tmux, atuin, lf, git, Claude Code
 and a set of modern CLI tools.
 
 Remote: `git@github.com:kuneberg/mac-shell-settings.git`
@@ -61,7 +61,7 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 │   └── colorschemes/
 ├── tmux/tmux.conf
 ├── atuin/config.toml
-├── yazi/                   # yazi.toml, theme, keymap, smart-enter plugin
+├── lf/                     # lfrc, gotham colors, icons, bat previewer
 ├── iterm2/gotham.json      # iTerm2 dynamic profile: gotham colors, opacity, keys as ghostty
 ├── iterm2/Gotham.itermcolors # same gotham colors as an importable iTerm2 color preset
 ├── claude/                 # Claude Code: settings.json + hooks (caffeinate while working)
@@ -77,7 +77,7 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 | `~/.config/alacritty/alacritty.toml` | `~/.dotfiles/alacritty/alacritty.toml` |
 | `~/.config/starship.toml` | `~/.dotfiles/starship/starship.toml` |
 | `~/.config/atuin/config.toml` | `~/.dotfiles/atuin/config.toml` |
-| `~/.config/yazi/yazi.toml` | `~/.dotfiles/yazi/yazi.toml` |
+| `~/.config/lf` | `~/.dotfiles/lf` (whole directory) |
 | `~/.config/micro` | `~/.dotfiles/micro` (whole directory) |
 | `~/.claude/settings.json` | `~/.dotfiles/claude/settings.json` |
 | `~/.claude/hooks` | `~/.dotfiles/claude/hooks` (whole directory) |
@@ -115,16 +115,18 @@ import `iterm2/Gotham.itermcolors` under Profiles → Colors → Color Presets.
 
 ## File manager
 
-Launch [Yazi](https://yazi-rs.github.io/) with `y`:
+Launch [lf](https://github.com/gokcehan/lf) with `lf`:
 
-- **Enter on a directory** — quit yazi and `cd` the shell into it
-  (Enter on a file opens it as usual)
-- **q** — quit and leave the shell where it was
+- **Enter on a directory** — quit lf and `cd` the shell into it
+  (Enter on a file opens it with `open`; `e` edits it in micro)
+- **q** / **Esc** — quit and leave the shell where it was
+- `.` toggles hidden files, `a`/`A` create a directory/file, `x`/`y`/`p`
+  cut/copy/paste, `D` deletes, `r` renames
 
-Implemented by the `y` wrapper in `zsh/functions.zsh` (`--cwd-file`)
-plus `yazi/keymap.toml` and the tiny `yazi/plugins/smart-enter.yazi`
-plugin. Theme (gotham) and options live in `yazi/theme.toml` and
-`yazi/yazi.toml`.
+Implemented by the `lf` wrapper in `zsh/functions.zsh` (`$LF_CD_FILE`)
+plus the `enter-or-open` command in `lf/lfrc`. File colors follow `ls`
+via `lf/colors`, icons inherit them via `lf/icons`, and text previews use
+bat through `lf/preview.sh`.
 
 ## Touch ID for sudo
 
@@ -210,7 +212,7 @@ changing anything.
 ```sh
 # 1. Remove the symlinks
 rm ~/.config/ghostty/config ~/.config/alacritty/alacritty.toml \
-   ~/.config/starship.toml ~/.config/atuin/config.toml ~/.config/yazi/yazi.toml \
+   ~/.config/starship.toml ~/.config/atuin/config.toml ~/.config/lf \
    ~/.config/micro ~/.tmux.conf ~/.claude/settings.json ~/.claude/hooks
 
 # 2. Delete the managed blocks (between the >>> dotfiles >>> markers)
