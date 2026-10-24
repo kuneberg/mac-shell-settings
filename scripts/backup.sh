@@ -22,6 +22,7 @@ TARGETS=(
   "$HOME/.config/micro/bindings.json"
   "$HOME/Library/Application Support/iTerm2/DynamicProfiles/gotham.json"
   "$HOME/.gdu.yaml"
+  "$HOME/.claude/settings.json"
   "/etc/pam.d/sudo_local"
 )
 

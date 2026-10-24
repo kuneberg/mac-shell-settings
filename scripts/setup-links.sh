@@ -24,3 +24,6 @@ link_file "$DOTFILES_DIR/micro"                  "$HOME/.config/micro"
 # iTerm2 auto-loads profiles from its DynamicProfiles directory
 link_file "$DOTFILES_DIR/iterm2/gotham.json"      "$HOME/Library/Application Support/iTerm2/DynamicProfiles/gotham.json"
 link_file "$DOTFILES_DIR/gdu/gdu.yaml"           "$HOME/.gdu.yaml"
+# Claude Code: user settings (hooks, model, permissions) + hook scripts
+link_file "$DOTFILES_DIR/claude/settings.json"   "$HOME/.claude/settings.json"
+link_file "$DOTFILES_DIR/claude/hooks"           "$HOME/.claude/hooks"

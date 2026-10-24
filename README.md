@@ -1,7 +1,7 @@
 # mac-shell-settings
 
 Single source of truth for my macOS shell and terminal environment:
-**zsh + Ghostty + Starship + Homebrew**, plus Alacritty, micro, tmux, atuin, yazi, git
+**zsh + Ghostty + Starship + Homebrew**, plus Alacritty, micro, tmux, atuin, yazi, git, Claude Code
 and a set of modern CLI tools.
 
 Remote: `git@github.com:kuneberg/mac-shell-settings.git`
@@ -64,6 +64,7 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 ├── yazi/                   # yazi.toml, theme, keymap, smart-enter plugin
 ├── iterm2/gotham.json      # iTerm2 dynamic profile: gotham colors, opacity, keys as ghostty
 ├── iterm2/Gotham.itermcolors # same gotham colors as an importable iTerm2 color preset
+├── claude/                 # Claude Code: settings.json + hooks (caffeinate while working)
 ├── sudo/sudo_local         # PAM: Touch ID for sudo (copied to /etc/pam.d, root-owned)
 └── docs/setup.md           # new-Mac walkthrough
 ```
@@ -78,6 +79,8 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 | `~/.config/atuin/config.toml` | `~/.dotfiles/atuin/config.toml` |
 | `~/.config/yazi/yazi.toml` | `~/.dotfiles/yazi/yazi.toml` |
 | `~/.config/micro` | `~/.dotfiles/micro` (whole directory) |
+| `~/.claude/settings.json` | `~/.dotfiles/claude/settings.json` |
+| `~/.claude/hooks` | `~/.dotfiles/claude/hooks` (whole directory) |
 | `~/Library/Application Support/iTerm2/DynamicProfiles/gotham.json` | `~/.dotfiles/iterm2/gotham.json` |
 | `~/.tmux.conf` | `~/.dotfiles/tmux/tmux.conf` |
 | `/etc/pam.d/sudo_local` | root-owned **copy** of `~/.dotfiles/sudo/sudo_local` (see [Touch ID for sudo](#touch-id-for-sudo)) |
@@ -208,7 +211,7 @@ changing anything.
 # 1. Remove the symlinks
 rm ~/.config/ghostty/config ~/.config/alacritty/alacritty.toml \
    ~/.config/starship.toml ~/.config/atuin/config.toml ~/.config/yazi/yazi.toml \
-   ~/.config/micro ~/.tmux.conf
+   ~/.config/micro ~/.tmux.conf ~/.claude/settings.json ~/.claude/hooks
 
 # 2. Delete the managed blocks (between the >>> dotfiles >>> markers)
 #    from ~/.zprofile and ~/.zshrc
