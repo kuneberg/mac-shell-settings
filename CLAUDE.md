@@ -40,8 +40,8 @@ magenta `#ff5c8f` · cyan `#2be4d0` · orange `#ff8700`
 ### Backgrounds
 
 - Ghostty: `#1c1b19`, opacity 0.70, blur, plus `ghostty/orange-glow.png`
-  as `background-image` (1280×800 RGBA, srcery orange `#ff5f00` radial
-  alpha ≤0.42 from the bottom-right; generated with a stdlib-only Python
+  as `background-image` (1280×800 RGBA, dimmed srcery orange `#eb5500`,
+  CRT-style radial alpha ≤0.22 peaking in the centre; generated with a stdlib-only Python
   PNG writer — regenerate the same way if the glow color changes). Ghostty
   expands `~` in `background-image`; the file is linked into
   `~/.config/ghostty/` by `setup-links.sh`.
