@@ -40,10 +40,12 @@ magenta `#ff5c8f` · cyan `#2be4d0` · orange `#ff8700`
 ### Backgrounds
 
 - Ghostty: `#1c1b19`, opacity 0.70, blur, plus `ghostty/orange-glow.png`
-  as `background-image` (1280×800 RGBA, dimmed srcery orange `#eb5500`,
-  wide CRT-style radial alpha ≤0.17 peaking in the centre; generated with a stdlib-only Python
-  PNG writer — regenerate the same way if the glow color changes). Ghostty
-  expands `~` in `background-image`; the file is linked into
+  as `background-image` (1280×800 opaque radial gradient, amber-CRT brown
+  `#392d21` centre → `#1a110a` corners, sampled from a phosphor monitor
+  photo; generated with a stdlib-only Python PNG writer — regenerate the
+  same way if the glow color changes). Opaque is fine: Ghostty composites
+  the image over `background` and then applies `background-opacity`, so
+  the window stays translucent. Ghostty expands `~` in `background-image`; the file is linked into
   `~/.config/ghostty/` by `setup-links.sh`.
 - Alacritty: same as Ghostty — `alacritty/alacritty.toml`
 - iTerm2: same as Ghostty (transparency 0.30 = opacity 0.70, blur) —

@@ -34,10 +34,11 @@ cursor-color = #fbb829
 cursor-text = #1c1b19
 selection-background = #fce8c3
 selection-foreground = #1c1b19
-# Dark amber glow like an old orange CRT: brightest in the centre, fading to
-# the edges (dimmed srcery orange, wide radial alpha <= 0.17). Transparent PNG, so
-# the 0.70 translucency still shows through; linked to
-# ~/.config/ghostty/orange-glow.png by setup-links.sh.
+# Amber CRT screen: opaque radial gradient from warm brown #392d21 in the
+# centre to #1a110a in the corners (colours sampled from a photo of an orange
+# phosphor monitor). Ghostty draws it over `background` and then applies
+# background-opacity, so the 0.70 translucency still shows through; linked
+# to ~/.config/ghostty/orange-glow.png by setup-links.sh.
 background-image = ~/.config/ghostty/orange-glow.png
 background-image-fit = cover
 background-image-position = center
