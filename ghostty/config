@@ -39,9 +39,10 @@ selection-foreground = #99d1ce
 window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
-# hidden: no titlebar at all; tabs still appear as the native tab bar when open.
+# transparent: titlebar with buttons + native tab bar, both over the terminal
+# background (gotham, 0.70 opacity). "hidden" drops the title row entirely.
 # "tabs" (tab bar inside the titlebar) renders broken on macOS 27 — avoid.
-macos-titlebar-style = hidden
+macos-titlebar-style = transparent
 # Dock/app icon: the "retro" variant of the Ghostty icon (needs app restart)
 macos-icon = retro
 window-save-state = always
