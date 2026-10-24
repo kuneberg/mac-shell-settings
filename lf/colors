@@ -1,9 +1,9 @@
 # lf file colors — matches `ls` (eza). Linked via ~/.config/lf/colors
 #
 # eza emits plain ANSI-16 codes, so every rule here uses ANSI codes too:
-# both tools resolve through the terminal's gotham palette and always agree.
-# Only the default text is hex (body #99d1ce) — the terminal's ANSI 7 is the
-# same color. One pattern per line, no brace expansion. Match order:
+# both tools resolve through the terminal's srcery palette and always agree.
+# Only the default text is hex (body #fce8c3 = the terminal foreground;
+# srcery's ANSI 7 is a darker tan, so plain files must not use it). One pattern per line, no brace expansion. Match order:
 # full path > dir name > file type > name > basename > extension > fi.
 #
 # eza classes: dir=bold blue, exec=bold green, link=cyan, broken=red,
@@ -24,7 +24,7 @@ cd  01;33
 su  01;32
 sg  01;32
 ex  01;32
-fi  38;2;153;209;206
+fi  38;2;252;232;195
 
 # --- build files ---
 README*         01;33

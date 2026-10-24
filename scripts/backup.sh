@@ -20,7 +20,7 @@ TARGETS=(
   "$HOME/.config/lf/icons"
   "$HOME/.config/micro/settings.json"
   "$HOME/.config/micro/bindings.json"
-  "$HOME/Library/Application Support/iTerm2/DynamicProfiles/gotham.json"
+  "$HOME/Library/Application Support/iTerm2/DynamicProfiles/srcery.json"
   "$HOME/.gdu.yaml"
   "$HOME/.claude/settings.json"
   "/etc/pam.d/sudo_local"

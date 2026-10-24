@@ -16,7 +16,7 @@ set shellopts '-eu'
 set ifs "\n"
 
 # --- behaviour (mirrors the previous yazi setup) ---
-set hidden false   # `lf -a` (zsh wrapper) starts with hidden files shown; `.` toggles
+set hidden false   # `lf -a` (zsh wrapper) starts with hidden files shown; ctrl-a toggles
 set dirfirst true
 set sortby natural
 set info size
@@ -33,17 +33,17 @@ set icons true
 set drawbox true
 set previewer ~/.config/lf/preview.sh
 
-# --- gotham chrome (file colors live in ./colors) ---
-# hovered row: cyan #33859e bg, ink #0c1014 text
-set cursoractivefmt  "\033[38;2;12;16;20;48;2;51;133;158m"
-# parent / preview hover: base4 #245361 bg, bright #d3ebe9 text
-set cursorparentfmt  "\033[38;2;211;235;233;48;2;36;83;97m"
-set cursorpreviewfmt "\033[38;2;211;235;233;48;2;36;83;97m"
+# --- srcery chrome (file colors live in ./colors) ---
+# hovered row: yellow #fbb829 bg, ink #1c1b19 text
+set cursoractivefmt  "\033[38;2;28;27;25;48;2;251;184;41m"
+# parent / preview hover: xgray4 #444444 bg, body #fce8c3 text
+set cursorparentfmt  "\033[38;2;252;232;195;48;2;68;68;68m"
+set cursorpreviewfmt "\033[38;2;252;232;195;48;2;68;68;68m"
 # box borders: base4
-set borderfmt "\033[38;2;36;83;97m"
-# prompt line: path in base5 #599cab, file in body #99d1ce
-set promptfmt "\033[38;2;89;156;171m%d\033[0m\033[1;38;2;153;209;206m%f\033[0m"
-set errorfmt "\033[38;2;194;49;39m"
+set borderfmt "\033[38;2;68;68;68m"
+# prompt line: path in bright blue #68a8e4, file in body #fce8c3
+set promptfmt "\033[38;2;104;168;228m%d\033[0m\033[1;38;2;252;232;195m%f\033[0m"
+set errorfmt "\033[38;2;239;47;39m"
 
 # --- commands ---
 cmd enter-or-open &{{

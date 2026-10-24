@@ -51,9 +51,11 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 │   ├── aliases.zsh
 │   ├── exports.zsh
 │   └── functions.zsh
-├── starship/starship.toml  # gotham prompt
-├── ghostty/config
-├── alacritty/alacritty.toml # same font / gotham colors / opacity as ghostty
+├── starship/starship.toml  # srcery prompt
+├── ghostty/
+│   ├── config
+│   └── orange-glow.png     # translucent dark orange glow used as background-image
+├── alacritty/alacritty.toml # same font / srcery colors / opacity as ghostty
 ├── git/gitconfig           # delta, micro as editor, aliases — no identity
 ├── micro/                  # default $EDITOR — see micro/README.md
 │   ├── settings.json
@@ -61,9 +63,9 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 │   └── colorschemes/
 ├── tmux/tmux.conf
 ├── atuin/config.toml
-├── lf/                     # lfrc, gotham colors, icons, bat previewer
-├── iterm2/gotham.json      # iTerm2 dynamic profile: gotham colors, opacity, keys as ghostty
-├── iterm2/Gotham.itermcolors # same gotham colors as an importable iTerm2 color preset
+├── lf/                     # lfrc, srcery colors, icons, bat previewer
+├── iterm2/srcery.json      # iTerm2 dynamic profile: srcery colors, opacity, keys as ghostty
+├── iterm2/Srcery.itermcolors # same srcery colors as an importable iTerm2 color preset
 ├── claude/                 # Claude Code: settings.json + hooks (caffeinate while working)
 ├── sudo/sudo_local         # PAM: Touch ID for sudo (copied to /etc/pam.d, root-owned)
 └── docs/setup.md           # new-Mac walkthrough
@@ -74,6 +76,7 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 | In home directory | Points to |
 | --- | --- |
 | `~/.config/ghostty/config` | `~/.dotfiles/ghostty/config` |
+| `~/.config/ghostty/orange-glow.png` | `~/.dotfiles/ghostty/orange-glow.png` |
 | `~/.config/alacritty/alacritty.toml` | `~/.dotfiles/alacritty/alacritty.toml` |
 | `~/.config/starship.toml` | `~/.dotfiles/starship/starship.toml` |
 | `~/.config/atuin/config.toml` | `~/.dotfiles/atuin/config.toml` |
@@ -81,7 +84,7 @@ deleted, and `user.name`/`user.email` in `~/.gitconfig` are never touched.
 | `~/.config/micro` | `~/.dotfiles/micro` (whole directory) |
 | `~/.claude/settings.json` | `~/.dotfiles/claude/settings.json` |
 | `~/.claude/hooks` | `~/.dotfiles/claude/hooks` (whole directory) |
-| `~/Library/Application Support/iTerm2/DynamicProfiles/gotham.json` | `~/.dotfiles/iterm2/gotham.json` |
+| `~/Library/Application Support/iTerm2/DynamicProfiles/srcery.json` | `~/.dotfiles/iterm2/srcery.json` |
 | `~/.tmux.conf` | `~/.dotfiles/tmux/tmux.conf` |
 | `/etc/pam.d/sudo_local` | root-owned **copy** of `~/.dotfiles/sudo/sudo_local` (see [Touch ID for sudo](#touch-id-for-sudo)) |
 
@@ -100,11 +103,11 @@ Git config is pulled in through an include, so your identity stays local:
 git config --global include.path ~/.dotfiles/git/gitconfig
 ```
 
-iTerm2 picks up the **Gotham** dynamic profile automatically, but which
+iTerm2 picks up the **Srcery** dynamic profile automatically, but which
 profile is *default* is an iTerm2 preference, not something the repo can
-set: Settings → Profiles → Gotham → Other Actions… → Set as Default (new
+set: Settings → Profiles → Srcery → Other Actions… → Set as Default (new
 windows will then match Ghostty). To theme a different profile instead,
-import `iterm2/Gotham.itermcolors` under Profiles → Colors → Color Presets.
+import `iterm2/Srcery.itermcolors` under Profiles → Colors → Color Presets.
 
 ## Editor
 

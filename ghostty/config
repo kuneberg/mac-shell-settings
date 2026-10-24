@@ -7,40 +7,46 @@ font-family = JetBrainsMono Nerd Font
 font-size = 15
 font-thicken = true
 
-# --- Theme (Gotham) ---
-# Gotham ANSI-16 palette (terminalcolors.com/themes/gotham/default)
-palette = 0=#0c1014
-palette = 1=#c23127
-palette = 2=#2aa889
-palette = 3=#edb443
-palette = 4=#195466
-palette = 5=#4e5166
-palette = 6=#33859e
-palette = 7=#99d1ce
-palette = 8=#0c1014
-palette = 9=#c23127
-palette = 10=#2aa889
-palette = 11=#edb443
-palette = 12=#195466
-palette = 13=#4e5166
-palette = 14=#33859e
-palette = 15=#99d1ce
-foreground = #99d1ce
-# Gotham near-black background
-background = #0c1014
+# --- Theme (Srcery) ---
+# Srcery ANSI-16 palette (terminalcolors.com/themes/srcery/default)
+palette = 0=#1c1b19
+palette = 1=#ef2f27
+palette = 2=#519f50
+palette = 3=#fbb829
+palette = 4=#2c78bf
+palette = 5=#e02c6d
+palette = 6=#0aaeb3
+palette = 7=#baa67f
+palette = 8=#918175
+palette = 9=#f75341
+palette = 10=#98bc37
+palette = 11=#fed06e
+palette = 12=#68a8e4
+palette = 13=#ff5c8f
+palette = 14=#2be4d0
+palette = 15=#fce8c3
+foreground = #fce8c3
+# Srcery near-black background
+background = #1c1b19
 background-opacity = 0.70
 background-blur = 22
-cursor-color = #99d1ce
-cursor-text = #11151c
-selection-background = #0a3749
-selection-foreground = #99d1ce
+cursor-color = #fbb829
+cursor-text = #1c1b19
+selection-background = #fce8c3
+selection-foreground = #1c1b19
+# Dark orange glow (srcery orange, soft radial alpha) rising from the
+# bottom-right corner. Transparent PNG, so the 0.70 translucency still shows
+# through; linked to ~/.config/ghostty/orange-glow.png by setup-links.sh.
+background-image = ~/.config/ghostty/orange-glow.png
+background-image-fit = cover
+background-image-position = center
 
 # --- Window ---
 window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
 # transparent: titlebar with buttons + native tab bar, both over the terminal
-# background (gotham, 0.70 opacity). "hidden" drops the title row entirely.
+# background (srcery, 0.70 opacity). "hidden" drops the title row entirely.
 # "tabs" (tab bar inside the titlebar) renders broken on macOS 27 — avoid.
 macos-titlebar-style = transparent
 # Dock/app icon: the "retro" variant of the Ghostty icon (needs app restart)

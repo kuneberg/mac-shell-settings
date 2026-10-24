@@ -29,9 +29,10 @@ $character\
 #   terra: sage green & terracotta.
 #   ruby: red.
 #   gotham: dark teal (terminalcolors.com/themes/gotham).
+#   srcery: warm, gray chrome + yellow (terminalcolors.com/themes/srcery).
 # To change the colors: change to the corresponding palette.
 
-palette = "gotham"
+palette = "srcery"
 
 # Disables the blank line at the start of the prompt
 add_newline = true
@@ -110,6 +111,25 @@ accent = "#33859E"
 # Path segment: gotham orange with ink text
 path = "#D26937"
 path_text = "#0C1014"
+
+[palettes.srcery]
+first = "#4E4E4E"
+second = "#494949"
+third = "#444444"
+fourth = "#3F3F3F"
+fifth = "#3A3A3A"
+sixth = "#353535"
+seventh = "#303030"
+eighth = "#2B2B2B"
+error = "#EF2F27"
+# Text color (the gradient is dark gray, so segment text is srcery fg):
+black = "#1C1B19"
+text = "#FCE8C3"
+github = "#FED06E"
+accent = "#FBB829"
+# Path segment: srcery yellow with ink text
+path = "#FBB829"
+path_text = "#1C1B19"
 
 [palettes.ruby]
 first = "#873739"
