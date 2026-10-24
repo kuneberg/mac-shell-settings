@@ -47,10 +47,12 @@ background-image-position = center
 window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
-# transparent: titlebar with buttons + native tab bar, both over the terminal
-# background (srcery, 0.70 opacity). "hidden" drops the title row entirely.
-# "tabs" (tab bar inside the titlebar) renders broken on macOS 27 — avoid.
-macos-titlebar-style = transparent
+# tabs: custom titlebar with the tab bar embedded in the title row, always
+# matching the terminal background. "transparent" is the native layout with
+# the background showing through; "hidden" drops the title row entirely.
+# Note: "tabs" has shown layout glitches (tabs bunched at the left) on
+# macOS 27 with Ghostty 1.3.x — switch back to transparent if that recurs.
+macos-titlebar-style = tabs
 # Dock/app icon: the "retro" variant of the Ghostty icon (needs app restart)
 macos-icon = retro
 window-save-state = always
