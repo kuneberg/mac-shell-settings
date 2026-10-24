@@ -40,6 +40,8 @@ window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
 macos-titlebar-style = native
+# Dock/app icon: the "retro" variant of the Ghostty icon (needs app restart)
+macos-icon = retro
 window-save-state = always
 
 # --- Cursor & mouse ---
