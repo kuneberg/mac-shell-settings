@@ -115,19 +115,25 @@ import `iterm2/Gotham.itermcolors` under Profiles → Colors → Color Presets.
 
 ## File manager
 
-Launch [lf](https://github.com/gokcehan/lf) with `lf`:
+Launch [lf](https://github.com/gokcehan/lf) with `lf` (`lf -a` shows hidden
+files; `ctrl-a` toggles them inside):
 
+- **type to filter** — any letter/digit narrows the list as you type;
+  Enter accepts, Esc cancels. Backspace clears an active filter.
 - **Enter on a directory** — quit lf and `cd` the shell into it
-  (Enter on a file opens it with `open`; `e` edits it in micro)
-- **q** / **Esc** — quit and leave the shell where it was
-- hidden files are off by default: `lf -a` starts with them shown, `.`
-  toggles; `a`/`A` create a directory/file, `x`/`y`/`p` cut/copy/paste,
-  `D` deletes, `r` renames
+  (Enter on a file opens it with `open`)
+- **Esc** — clear the filter, or quit when none is active; `ctrl-c`,
+  `ctrl-d`, `ctrl-q` always quit; the shell stays where it was
+- arrows navigate (`→` enters a directory without quitting, `←` goes up)
+- `F2` rename, `F3` view, `F4` edit in micro, `F7` new directory,
+  `ctrl-t` new file, `F8` delete, `ctrl-x`/`ctrl-y`/`ctrl-v` cut/copy/paste,
+  `space` select, `~` home
 
 Implemented by the `lf` wrapper in `zsh/functions.zsh` (`$LF_CD_FILE`)
-plus the `enter-or-open` command in `lf/lfrc`. File colors follow `ls`
-via `lf/colors`, icons inherit them via `lf/icons`, and text previews use
-bat through `lf/preview.sh`.
+plus `enter-or-open`/`esc-or-quit` and the generated per-character
+`filter` maps in `lf/lfrc`. File colors follow `ls` via `lf/colors`,
+icons inherit them via `lf/icons`, and text previews use bat through
+`lf/preview.sh`.
 
 ## Touch ID for sudo
 

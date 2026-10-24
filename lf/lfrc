@@ -2,7 +2,14 @@
 #
 # Enter on a directory -> quit INTO it: the shell wrapper in zsh/functions.zsh
 # sets $LF_CD_FILE, enter-or-open writes the directory there and quits, the
-# wrapper cds. Enter on a file -> open it. q / Esc -> quit, shell stays put.
+# wrapper cds. Without the wrapper (plain `command lf`) Enter just enters the
+# directory inside lf. Enter on a file -> open it.
+#
+# Type-to-filter: every letter/digit key opens the filter prompt with that
+# character, the list narrows as you type (incfilter), Enter accepts.
+# Esc clears an active filter, or quits when none is active. Backspace
+# clears the filter. Because letters are taken, commands live on ctrl/F keys
+# (see --- keys ---) and navigation is arrows + Enter.
 
 set shell sh
 set shellopts '-eu'
@@ -18,6 +25,7 @@ set ratios 1:3:4
 set scrolloff 8
 set period 1
 set incsearch true
+set incfilter true
 set ignorecase true
 set smartcase true
 set tabstop 2
@@ -39,13 +47,28 @@ set errorfmt "\033[38;2;194;49;39m"
 
 # --- commands ---
 cmd enter-or-open &{{
-    if [ -d "$f" ]; then
-        if [ -n "${LF_CD_FILE:-}" ]; then
-            printf '%s' "$f" > "$LF_CD_FILE"
-        fi
+    if [ -d "$f" ] && [ -n "${LF_CD_FILE:-}" ]; then
+        printf '%s' "$f" > "$LF_CD_FILE"
         lf -remote "send $id quit"
     else
         lf -remote "send $id open"
+    fi
+}}
+
+# Esc: clear the filter if one is active (fewer rows shown than exist),
+# otherwise quit. lf exposes no filter state, so compare the displayed list
+# with the directory contents (respecting the hidden option).
+cmd esc-or-quit %{{
+    shown=$(lf -remote "query $id files" | grep -c . || true)
+    if [ "${lf_hidden:-false}" = "true" ]; then
+        total=$(find . -mindepth 1 -maxdepth 1 | wc -l | tr -d ' ')
+    else
+        total=$(find . -mindepth 1 -maxdepth 1 -not -name '.*' | wc -l | tr -d ' ')
+    fi
+    if [ "$shown" -lt "$total" ]; then
+        lf -remote "send $id setfilter"
+    else
+        lf -remote "send $id quit"
     fi
 }}
 
@@ -53,19 +76,88 @@ cmd mkdir %mkdir -p -- "$@"
 cmd touch %touch -- "$@"
 
 # --- keys ---
-map <enter> enter-or-open
-map q       quit
-map <esc>   quit
-map e       $$EDITOR "$f"
-map i       $$PAGER "$f"
-map .       set hidden!
-map <c-r>   reload
-map a       push :mkdir<space>
-map A       push :touch<space>
-map x       cut
-map y       copy
-map p       paste
-map D       delete
-map r       rename
-map gh      cd ~
-map gw      cd ~/Work
+map <enter>     enter-or-open
+map <esc>       esc-or-quit
+map <backspace> setfilter
+map <backspace2> setfilter
+map <c-c>       quit
+map <c-d>       quit
+map <c-q>       quit
+map <f2>        push :rename<space>
+map <f3>        $$PAGER "$f"
+map <f4>        $$EDITOR "$f"
+map <f7>        push :mkdir<space>
+map <f8>        delete
+map <c-t>       push :touch<space>
+map <c-x>       cut
+map <c-y>       copy
+map <c-v>       paste
+map <c-a>       set hidden!
+map ~           cd ~
+
+# type-to-filter: generated — one map per printable character
+map a filter a
+map b filter b
+map c filter c
+map d filter d
+map e filter e
+map f filter f
+map g filter g
+map h filter h
+map i filter i
+map j filter j
+map k filter k
+map l filter l
+map m filter m
+map n filter n
+map o filter o
+map p filter p
+map q filter q
+map r filter r
+map s filter s
+map t filter t
+map u filter u
+map v filter v
+map w filter w
+map x filter x
+map y filter y
+map z filter z
+map A filter A
+map B filter B
+map C filter C
+map D filter D
+map E filter E
+map F filter F
+map G filter G
+map H filter H
+map I filter I
+map J filter J
+map K filter K
+map L filter L
+map M filter M
+map N filter N
+map O filter O
+map P filter P
+map Q filter Q
+map R filter R
+map S filter S
+map T filter T
+map U filter U
+map V filter V
+map W filter W
+map X filter X
+map Y filter Y
+map Z filter Z
+map 0 filter 0
+map 1 filter 1
+map 2 filter 2
+map 3 filter 3
+map 4 filter 4
+map 5 filter 5
+map 6 filter 6
+map 7 filter 7
+map 8 filter 8
+map 9 filter 9
+map - filter -
+map _ filter _
+map . filter .
