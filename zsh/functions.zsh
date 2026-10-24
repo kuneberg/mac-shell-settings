@@ -15,10 +15,19 @@ up() {
 # lf — file manager that can leave the shell in the directory you picked.
 # Enter on a directory quits into it (lfrc's enter-or-open writes the path
 # to $LF_CD_FILE); q / Esc quit and the shell stays where it was.
+# `lf -a` starts with hidden files shown (lf has no such flag itself).
 lf() {
-	local tmp dir
+	local tmp dir arg
+	local -a args
+	for arg in "$@"; do
+		if [[ "$arg" == "-a" ]]; then
+			args+=(-command 'set hidden true')
+		else
+			args+=("$arg")
+		fi
+	done
 	tmp="$(mktemp -t "lf-cd.XXXXXX")"
-	LF_CD_FILE="$tmp" command lf "$@"
+	LF_CD_FILE="$tmp" command lf "${args[@]}"
 	dir="$(<"$tmp")"
 	[ -n "$dir" ] && [ -d "$dir" ] && [ "$dir" != "$PWD" ] && builtin cd -- "$dir"
 	command rm -f -- "$tmp"

@@ -9,7 +9,7 @@ set shellopts '-eu'
 set ifs "\n"
 
 # --- behaviour (mirrors the previous yazi setup) ---
-set hidden true
+set hidden false   # `lf -a` (zsh wrapper) starts with hidden files shown; `.` toggles
 set dirfirst true
 set sortby natural
 set info size

@@ -120,8 +120,9 @@ Launch [lf](https://github.com/gokcehan/lf) with `lf`:
 - **Enter on a directory** — quit lf and `cd` the shell into it
   (Enter on a file opens it with `open`; `e` edits it in micro)
 - **q** / **Esc** — quit and leave the shell where it was
-- `.` toggles hidden files, `a`/`A` create a directory/file, `x`/`y`/`p`
-  cut/copy/paste, `D` deletes, `r` renames
+- hidden files are off by default: `lf -a` starts with them shown, `.`
+  toggles; `a`/`A` create a directory/file, `x`/`y`/`p` cut/copy/paste,
+  `D` deletes, `r` renames
 
 Implemented by the `lf` wrapper in `zsh/functions.zsh` (`$LF_CD_FILE`)
 plus the `enter-or-open` command in `lf/lfrc`. File colors follow `ls`
