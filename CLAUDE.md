@@ -63,6 +63,13 @@ magenta `#888ca6` · violet `#4e5166` · cyan `#33859e` · blue `#195466`
   gradient (first–eighth, base4 `#245361` → base3 `#0a3749`). The
   gradient is dark, so segment text is body `#99d1ce`; the prompt
   character uses the per-palette `accent` key (eighth is too dark).
+  The directory segment uses `path`/`path_text` (gotham: orange
+  `#d26937` with ink text; other palettes: their third + text).
+  It ends with a solid `path` arrow whose bg is the next segment's:
+  `repo_root_format` (used inside git repos, needs `repo_root_style`)
+  targets git (`third`), `format` targets time (`seventh`). So git must
+  directly follow `$directory`, and the git/langs group owns the
+  third→seventh arrow before `$time`.
   Other palettes (opal/amethyst/terra/ruby) are kept for switching.
 - bat uses the built-in `Nord` theme (closest to gotham).
 

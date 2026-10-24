@@ -1,22 +1,21 @@
 format = """
 $directory\
 (\
-    [](fg:black bg:fourth)\
-    $python\
-    $conda\
-    $nodejs\
-    $c\
-    $haskell\
-    $java\
-    $julia\
-    $rust\
-)\
-(\
-    [](fg:black bg:third)\
     $git_branch\
     $git_status\
+    (\
+        [](fg:black bg:fourth)\
+        $python\
+        $conda\
+        $nodejs\
+        $c\
+        $haskell\
+        $java\
+        $julia\
+        $rust\
+    )\
+    [](fg:third bg:seventh)\
 )\
-[](fg:third bg:seventh)\
 $time\
 $cmd_duration\
 [](fg:eighth)\
@@ -53,6 +52,8 @@ black = "#272D37"
 text = "#CBF4F8"
 github = "#B02B10"
 accent = "#3A7EAE"
+path = "#358F9B"
+path_text = "#CBF4F8"
 
 [palettes.amethyst]
 first = "#6E43C4"
@@ -69,6 +70,8 @@ black = "#272D37"
 text = "#F2EBFF"
 github = "#B02B10"
 accent = "#5A359E"
+path = "#693CBC"
+path_text = "#F2EBFF"
 
 [palettes.terra]
 first = "#F77D5B"
@@ -85,6 +88,8 @@ black = "#2B211B"
 text = "#2B211B"
 github = "#551A0E"
 accent = "#D0686E"
+path = "#EC7760"
+path_text = "#2B211B"
 
 [palettes.gotham]
 first = "#245361"
@@ -102,6 +107,9 @@ text = "#99D1CE"
 github = "#EDB443"
 # Prompt character (the dark eighth would vanish on the background):
 accent = "#33859E"
+# Path segment: gotham orange with ink text
+path = "#D26937"
+path_text = "#0C1014"
 
 [palettes.ruby]
 first = "#873739"
@@ -118,14 +126,20 @@ black = "#272D37"
 text = "#F2EBFF"
 github = "#450920"
 accent = "#98393F"
+path = "#8D393C"
+path_text = "#F2EBFF"
 
 [directory]
-style = "bg:third fg:text"
-format = "[](third)[   $path ]($style)($style)[$read_only]($read_only_style)"
+style = "bg:path fg:path_text"
+# Path ends with a solid path-colored arrow onto the next segment: the git
+# segment (third) inside a repo, otherwise the time segment (seventh).
+format = "[](path)[   $path ]($style)[$read_only]($read_only_style)[](fg:path bg:seventh)"
+repo_root_format = "[](path)[   $before_root_path$repo_root$path ]($style)[$read_only]($read_only_style)[](fg:path bg:third)"
+repo_root_style = "bg:path fg:path_text"
 truncation_symbol = "…/"
 truncate_to_repo = true
 read_only ="  "
-read_only_style = "bg:third fg:text"
+read_only_style = "bg:path fg:path_text"
 
 [directory.substitutions]
 "Documents" = "  "
