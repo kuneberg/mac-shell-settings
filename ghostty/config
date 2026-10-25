@@ -26,8 +26,11 @@ palette = 13=#ff5c8f
 palette = 14=#2be4d0
 palette = 15=#fce8c3
 foreground = #fce8c3
-# Srcery near-black background
-background = #1c1b19
+# Window background colour. Srcery's own black is #1c1b19; this is instead a
+# warm brown between the glow image's top edge (#2b2117) and corners (#1a110a),
+# because the transparent/tabs titlebar is a flat layer in this colour (the
+# image never reaches it) and should read as a continuation of the gradient.
+background = #241a12
 background-opacity = 0.70
 background-blur = 22
 cursor-color = #fbb829
@@ -52,7 +55,7 @@ window-padding-balance = true
 # the background showing through; "hidden" drops the title row entirely.
 # Note: "tabs" has shown layout glitches (tabs bunched at the left) on
 # macOS 27 with Ghostty 1.3.x — switch back to transparent if that recurs.
-macos-titlebar-style = tabs
+macos-titlebar-style = transparent
 # Dock/app icon: the "retro" variant of the Ghostty icon (needs app restart)
 macos-icon = retro
 window-save-state = always

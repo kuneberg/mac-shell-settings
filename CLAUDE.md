@@ -39,7 +39,10 @@ magenta `#ff5c8f` · cyan `#2be4d0` · orange `#ff8700`
 
 ### Backgrounds
 
-- Ghostty: `#1c1b19`, opacity 0.70, blur, plus `ghostty/orange-glow.png`
+- Ghostty: `background` is `#241a12` (not srcery black) so the titlebar and
+  tab bar, which are a flat layer in the window background colour and never
+  show the image, blend with the glow's top edge; opacity 0.70, blur, plus
+  `ghostty/orange-glow.png`
   as `background-image` (1280×800 opaque radial gradient, amber-CRT brown
   `#392d21` centre → `#1a110a` corners, sampled from a phosphor monitor
   photo; generated with a stdlib-only Python PNG writer — regenerate the
