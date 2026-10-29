@@ -6,6 +6,10 @@
 font-family = JetBrainsMono Nerd Font
 font-size = 15
 font-thicken = true
+# Window and tab titles: zsh (zsh/zshrc) puts Nerd Font glyphs (folder,
+# home, Claude) in the title, which are private-use code points the system
+# font cannot render — so the title bar uses the same Nerd Font.
+window-title-font-family = JetBrainsMono Nerd Font
 
 # --- Theme (Srcery) ---
 # Srcery ANSI-16 palette (terminalcolors.com/themes/srcery/default)
@@ -53,9 +57,15 @@ window-padding-balance = true
 # tabs: custom titlebar with the tab bar embedded in the title row, always
 # matching the terminal background. "transparent" is the native layout with
 # the background showing through; "hidden" drops the title row entirely.
-# Note: "tabs" has shown layout glitches (tabs bunched at the left) on
-# macOS 27 with Ghostty 1.3.x — switch back to transparent if that recurs.
-macos-titlebar-style = transparent
+# Note: "tabs" showed layout glitches (tabs bunched at the left) on macOS 27
+# with Ghostty 1.3.x; fixed upstream as of 1.4.0, so this is back on tabs.
+# Changing this only applies to new windows: restart Ghostty (or open a new
+# window) after reloading the config.
+macos-titlebar-style = tabs
+# macOS puts a proxy icon (the working directory's folder) next to the window
+# title once the shell reports its cwd; the zsh title already carries its own
+# folder/home glyph, so the native one is off to avoid two icons.
+macos-titlebar-proxy-icon = hidden
 # Dock/app icon: the "retro" variant of the Ghostty icon (needs app restart)
 macos-icon = retro
 window-save-state = always
@@ -66,10 +76,18 @@ cursor-style-blink = false
 mouse-hide-while-typing = true
 
 # --- Behaviour ---
+# Bell (e.g. Claude Code rings it when a turn finishes): bounce the dock
+# icon only. The default `title` feature prepends a 🔔 emoji to the window
+# and tab title until the window is refocused — there is no way to pick a
+# different glyph, so it is off to keep the Nerd Font title clean.
+bell-features = no-system,no-audio,attention,no-title,no-border
 copy-on-select = clipboard
 confirm-close-surface = false
 quit-after-last-window-closed = false
 macos-option-as-alt = true
 shell-integration = zsh
-# title is set by zsh (zsh/zshrc) as "dir | binary" — keep Ghostty's own off
-shell-integration-features = cursor,sudo
+# title is set by zsh (zsh/zshrc) as "<icon> dir | binary" — keep Ghostty's own off.
+# Features not listed keep their defaults (title is on by default), so it must
+# be disabled explicitly with no-title; otherwise Ghostty's zsh precmd/preexec
+# hooks overwrite the title with the plain cwd / command on every prompt.
+shell-integration-features = cursor,sudo,no-title
